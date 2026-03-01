@@ -12,6 +12,29 @@
   "images": {
     "title": "Images",
     "subtitle": "Choose an action",
+    "convertPage": {
+      "dropzoneHint": "Drag image here or click to select",
+      "dropzoneActive": "Drop to upload",
+      "targetFormat": "Target format",
+      "convertBtn": "Convert",
+      "resetBtn": "Reset",
+      "removeFile": "Remove",
+      "imageLabel": "Image",
+      "resultLabel": "Result",
+      "downloadResult": "Download",
+      "downloadZip": "Download all as ZIP",
+      "imagesReady_one": "1 image ready for download",
+      "imagesReady_other": "{{count}} images ready for download",
+      "filesSelected_one": "1 file selected",
+      "filesSelected_other": "{{count}} files selected",
+      "multipleHint": "– multiple allowed",
+      "formats": {
+        "jpg": "JPEG",
+        "png": "PNG",
+        "webp": "WebP",
+        "gif": "GIF"
+      }
+    },
     "tools": {
       "convert": {
         "title": "Convert image",

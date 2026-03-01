@@ -2,6 +2,7 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Home } from "@/pages/Home";
+import { ImageConvert } from "@/pages/ImageConvert";
 import { Images } from "@/pages/Images";
 import { Placeholder } from "@/pages/Placeholder";
 
@@ -23,12 +24,7 @@ function App() {
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="images" element={<Images />} />
-        <Route
-          path="images/convert"
-          element={
-            <Placeholder titleKey="images.tools.convert.title" backTo="/images" />
-          }
-        />
+        <Route path="images/convert" element={<ImageConvert />} />
         <Route
           path="images/compress"
           element={

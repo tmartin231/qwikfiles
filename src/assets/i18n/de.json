@@ -12,6 +12,29 @@
   "images": {
     "title": "Bilder",
     "subtitle": "Wähle eine Aktion",
+    "convertPage": {
+      "dropzoneHint": "Bild hierher ziehen oder Klicken zum Auswählen",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "targetFormat": "Zielformat",
+      "convertBtn": "Konvertieren",
+      "resetBtn": "Zurücksetzen",
+      "removeFile": "Entfernen",
+      "imageLabel": "Bild",
+      "resultLabel": "Ergebnis",
+      "downloadResult": "Herunterladen",
+      "downloadZip": "Alle als ZIP herunterladen",
+      "imagesReady_one": "1 Bild zum Download bereit",
+      "imagesReady_other": "{{count}} Bilder zum Download bereit",
+      "filesSelected_one": "1 Datei ausgewählt",
+      "filesSelected_other": "{{count}} Dateien ausgewählt",
+      "multipleHint": "– mehrere möglich",
+      "formats": {
+        "jpg": "JPEG",
+        "png": "PNG",
+        "webp": "WebP",
+        "gif": "GIF"
+      }
+    },
     "tools": {
       "convert": {
         "title": "Bild konvertieren",
