@@ -71,6 +71,17 @@
       "filesSelected_other": "{{count}} files selected",
       "multipleHint": "– multiple allowed"
     },
+    "cropPage": {
+      "dropzoneHint": "Drag image here or click to select",
+      "dropzoneActive": "Drop to upload",
+      "imageLabel": "Image",
+      "cropHint": "Drag on the image to select the crop area",
+      "cropBtn": "Crop",
+      "resetBtn": "Reset",
+      "removeFile": "Remove",
+      "downloadResult": "Download",
+      "singleImageOnly": "Only one image can be cropped at a time"
+    },
     "tools": {
       "convert": {
         "title": "Convert image",

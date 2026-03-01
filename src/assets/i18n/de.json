@@ -71,6 +71,17 @@
       "filesSelected_other": "{{count}} Dateien ausgewählt",
       "multipleHint": "– mehrere möglich"
     },
+    "cropPage": {
+      "dropzoneHint": "Bild hierher ziehen oder Klicken zum Auswählen",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "imageLabel": "Bild",
+      "cropHint": "Ausschnitt auf dem Bild durch Ziehen markieren",
+      "cropBtn": "Zuschneiden",
+      "resetBtn": "Zurücksetzen",
+      "removeFile": "Entfernen",
+      "downloadResult": "Herunterladen",
+      "singleImageOnly": "Nur ein Bild zum Zuschneiden möglich"
+    },
     "tools": {
       "convert": {
         "title": "Bild konvertieren",

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Home } from "@/pages/Home";
 import { ImageCompress } from "@/pages/ImageCompress";
 import { ImageConvert } from "@/pages/ImageConvert";
+import { ImageCrop } from "@/pages/ImageCrop";
 import { ImageResize } from "@/pages/ImageResize";
 import { Images } from "@/pages/Images";
 import { Placeholder } from "@/pages/Placeholder";
@@ -29,12 +30,7 @@ function App() {
         <Route path="images/convert" element={<ImageConvert />} />
         <Route path="images/compress" element={<ImageCompress />} />
         <Route path="images/resize" element={<ImageResize />} />
-        <Route
-          path="images/crop"
-          element={
-            <Placeholder titleKey="images.tools.crop.title" backTo="/images" />
-          }
-        />
+        <Route path="images/crop" element={<ImageCrop />} />
         <Route
           path="pdf"
           element={<Placeholder title="PDF" />}
