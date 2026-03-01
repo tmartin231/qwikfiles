@@ -41,9 +41,9 @@ export function Home() {
           src="/modo_winky.png"
           alt=""
           role="presentation"
-          className="relative z-0 hidden h-auto w-64 max-h-[340px] object-contain sm:block sm:w-96 sm:max-h-[420px]"
+          className="hidden object-contain sm:block sm:w-96 sm:max-h-[420px]"
         />
-        <div className="relative z-10 flex w-full max-w-4xl flex-col gap-6 sm:-mt-42 md:flex-row">
+        <div className="relative z-10 flex w-full max-w-4xl flex-col gap-6 sm:-mt-34 md:flex-row">
           {categories.map(
             ({
               to,

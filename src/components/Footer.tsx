@@ -8,7 +8,7 @@ export function Footer() {
 
   return (
     <footer className="mt-auto border-t border-border/80 bg-muted/30 py-6">
-      <div className="mx-auto flex max-w-[1820px] flex-col items-center justify-center gap-8 px-6 sm:flex-row">
+      <div className="mx-auto flex max-w-[1820px] items-center justify-center gap-4 px-6 flex-row">
         <p className="text-sm text-muted-foreground">Made by Tom</p>
         <a
           href={mailto}

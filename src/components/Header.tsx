@@ -18,7 +18,7 @@ export function Header() {
   }, [dark]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/80 shadow-sm shadow-black/5 supports-backdrop-filter:bg-background/70 backdrop-blur-md dark:shadow-none dark:border-border/50">
+    <header className="sticky top-0 z-50 w-full border-b border-border/80 bg-background/80 shadow-sm shadow-black/5 supports-backdrop-filter:bg-background/70 backdrop-blur-md dark:shadow-none dark:border-border/50 mb-20">
       <div className="mx-auto flex h-16 max-w-[1820px] items-center justify-between gap-6 px-6">
         <Link
           to="/"
