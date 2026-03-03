@@ -10,7 +10,7 @@ const LANGUAGES = [
   { code: "en", labelKey: "languages.en" },
 ] as const;
 
-const THEME_KEY = "modo-theme";
+const THEME_KEY = "qwikfiles-theme";
 
 function getInitialDark(): boolean {
   if (typeof window === "undefined") return true;
@@ -43,7 +43,7 @@ export function Header() {
 
   const changeLanguage = (code: string) => {
     i18n.changeLanguage(code);
-    localStorage.setItem("modo-language", code);
+    localStorage.setItem("qwikfiles-language", code);
     setLanguageModalOpen(false);
   };
 

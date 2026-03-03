@@ -12,11 +12,18 @@ const SUPPORTED_LANGS = ["de", "en"] as const;
 
 function getInitialLanguage(): string {
   if (typeof window === "undefined") return "en";
+  // 1. Explizit gespeicherte Sprache bevorzugen (persistente User-Einstellung)
+  const saved = localStorage.getItem("qwikfiles-language");
+  if (
+    saved &&
+    SUPPORTED_LANGS.includes(saved as (typeof SUPPORTED_LANGS)[number])
+  ) {
+    return saved;
+  }
+  // 2. Fallback: Browsersprache, falls unterstützt
   const browserLang = navigator.language?.split("-")[0]?.toLowerCase();
   if (browserLang === "de" || browserLang === "en") return browserLang;
-  const saved = localStorage.getItem("modo-language");
-  if (saved && SUPPORTED_LANGS.includes(saved as (typeof SUPPORTED_LANGS)[number]))
-    return saved;
+  // 3. Default
   return "en";
 }
 

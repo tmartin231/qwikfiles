@@ -2,7 +2,7 @@ import { Github, MessageCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 const FEEDBACK_EMAIL = "tmartin231@outlook.de";
-const FEEDBACK_SUBJECT = "Modo – Feedback";
+const FEEDBACK_SUBJECT = "qwikfiles – Feedback";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ export function Footer() {
     <footer className="mt-auto border-t border-border/80 bg-muted/30 py-6">
       <div className="mx-auto flex max-w-[1820px] flex-row items-center justify-center gap-4 px-6">
         <a
-          href="https://github.com/tmartin231/Modo"
+          href="https://github.com/tmartin231/qwikfiles"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-sm font-medium text-muted-foreground ring-1 ring-border/50 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"

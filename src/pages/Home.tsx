@@ -36,7 +36,7 @@ export function Home() {
     <main className="flex">
       <div className="mx-auto flex flex-col items-center justify-center">
         <img
-          src="/modo_winky.png"
+          src="/qwik_winky.png"
           alt=""
           role="presentation"
           className="hidden object-contain sm:block sm:w-96 sm:max-h-[420px]"
