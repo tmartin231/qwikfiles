@@ -1,0 +1,235 @@
+{
+  "common": {
+    "appName": "qwikfiles",
+    "tagline": "Simple Convert"
+  },
+  "header": {
+    "themeLight": "Passa alla modalità chiara",
+    "themeDark": "Passa alla modalità scura",
+    "language": "Lingua",
+    "chooseLanguage": "Scegli la lingua"
+  },
+  "images": {
+    "title": "Immagini",
+    "subtitle": "Scegli un'azione",
+    "dropzoneHint": "Trascina un'immagine qui o fai clic per selezionare",
+    "dropzoneActive": "Rilascia per caricare",
+    "removeFile": "Rimuovi",
+    "addMoreFiles": "Aggiungi altri file",
+    "imageLabel": "Immagine",
+    "downloadResult": "Scarica",
+    "resetBtn": "Reimposta",
+    "downloadZip": "Scarica tutto come ZIP",
+    "imagesReady_one": "1 immagine pronta per il download",
+    "imagesReady_other": "{{count}} immagini pronte per il download",
+    "filesSelected_one": "1 file selezionato",
+    "filesSelected_other": "{{count}} file selezionati",
+    "multipleHint": "– consentiti più file",
+    "errors": {
+      "tiffParseError": "Impossibile leggere questo file TIFF. Alcune varianti TIFF (ad es. certe compressioni) non sono supportate."
+    },
+    "convertPage": {
+      "targetFormat": "Formato di destinazione",
+      "convertBtn": "Converti",
+      "resultLabel": "Risultato",
+      "formats": {
+        "jpg": "JPEG",
+        "png": "PNG",
+        "webp": "WebP",
+        "gif": "GIF"
+      }
+    },
+    "compressPage": {
+      "qualityLabel": "Qualità (più bassa = file più piccolo)",
+      "compressBtn": "Comprimi",
+      "outputFormat": "Output: JPEG/WebP = stesso formato. PNG/GIF/SVG = WebP (la qualità controlla la dimensione).",
+      "savings": "Da {{from}} a {{to}} ({{percent}} % più piccolo)",
+      "savingsLarger": "Da {{from}} a {{to}} ({{percent}} % più grande)"
+    },
+    "resizePage": {
+      "scaleLabel": "Scala",
+      "scaleHint": "100 = dimensione originale, 50 = metà, 200 = doppio",
+      "resizeBtn": "Ridimensiona"
+    },
+    "cropPage": {
+      "cropHint": "Trascina sull'immagine per selezionare l'area da ritagliare",
+      "cropBtn": "Ritaglia",
+      "singleImageOnly": "È possibile ritagliare solo un'immagine alla volta."
+    },
+    "tools": {
+      "convert": {
+        "title": "Converti immagine",
+        "description": "Cambia formato, ad es. JPG → PNG o WebP"
+      },
+      "compress": {
+        "title": "Comprimi immagine",
+        "description": "Riduci la dimensione del file e regola la qualità"
+      },
+      "resize": {
+        "title": "Ridimensiona immagine",
+        "description": "Modifica dimensioni e risoluzione"
+      },
+      "crop": {
+        "title": "Ritaglia immagine",
+        "description": "Seleziona e ritaglia un'area"
+      }
+    }
+  },
+  "files": {
+    "page": {
+      "title": "Converti altri file",
+      "description": "Markdown, JSON, TXT, CSV e altro – conversione tra formati di testo comuni.",
+      "fileLabel": "File",
+      "dropzoneHint": "Trascina un file qui o fai clic per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "singleFileOnly": "Attualmente è supportato un solo file alla volta.",
+      "targetFormat": "Formato di destinazione",
+      "convertBtn": "Converti",
+      "resetBtn": "Reimposta",
+      "resultReady": "File pronto per il download",
+      "resultsReady_one": "1 file pronto per il download",
+      "resultsReady_other": "{{count}} file pronti per il download",
+      "downloadResult": "Scarica",
+      "downloadZip": "Scarica tutto come ZIP",
+      "unsupportedCombination": "Questa combinazione di formato di input e destinazione non è ancora supportata.",
+      "genericError": "Si è verificato un errore durante la conversione del file.",
+      "formats": {
+        "json": "JSON",
+        "csv": "CSV",
+        "md": "Markdown",
+        "yaml": "YAML",
+        "xml": "XML"
+      }
+    }
+  },
+  "home": {
+    "categories": {
+      "images": {
+        "title": "Immagini",
+        "description": "JPG, PNG, WebP, GIF – converti, comprimi, adatta"
+      },
+      "pdf": {
+        "title": "PDF",
+        "description": "Unisci, dividi o converti PDF in altri formati"
+      },
+      "files": {
+        "title": "Altri file",
+        "description": "Markdown, JSON, TXT, CSV e altro – converti e adatta"
+      }
+    },
+    "mostUsed": {
+      "title": "Strumenti più usati",
+      "subtitle": "In base alle tue azioni recenti in questo browser."
+    }
+  },
+  "pdf": {
+    "tools": {
+      "merge": {
+        "title": "Unisci PDF",
+        "description": "Combina più file PDF in un unico documento."
+      },
+      "split": {
+        "title": "Dividi PDF",
+        "description": "Dividi un PDF in più file con pagine selezionate."
+      },
+      "convert": {
+        "title": "Converti PDF",
+        "description": "Converti PDF in altri formati come immagini o testo."
+      },
+      "toPdf": {
+        "title": "Converti in PDF",
+        "description": "Trasforma immagini, HTML o testo in PDF."
+      }
+    },
+    "convertPage": {
+      "title": "Converti PDF",
+      "description": "Converti un PDF in documenti Office o immagini – tutto nel browser.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui o fai clic per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "targetLabel": "Formato di destinazione",
+      "targets": {
+        "word": "PDF in Word (DOCX)",
+        "imagesPng": "PDF in immagini (PNG)",
+        "imagesJpg": "PDF in immagini (JPG)",
+        "svg": "PDF in SVG (pagine come SVG)",
+        "pptx": "PDF in PowerPoint (PPTX)",
+        "html": "PDF in HTML (testo)",
+        "text": "PDF in testo (TXT)"
+      },
+      "convertBtn": "Converti",
+      "resetBtn": "Reimposta",
+      "resultReady": "File convertito pronto per il download",
+      "downloadResult": "Scarica file"
+    },
+    "toPdfPage": {
+      "title": "Converti in PDF",
+      "description": "Converti immagini, HTML o testo in PDF – tutto nel browser.",
+      "fileLabel": "File sorgente",
+      "dropzoneHint": "Trascina un file qui o fai clic per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "targetLabel": "Tipo di sorgente",
+      "targets": {
+        "image": "Immagine in PDF (PNG/JPG, ecc.)",
+        "svg": "SVG in PDF",
+        "html": "HTML in PDF (solo testo)",
+        "text": "Testo in PDF (TXT/Markdown)",
+        "docx": "Word in PDF (DOCX)",
+        "pptx": "PowerPoint in PDF (PPTX)"
+      },
+      "convertBtn": "Converti in PDF",
+      "resetBtn": "Reimposta",
+      "resultReady": "PDF pronto per il download",
+      "downloadResult": "Scarica PDF",
+      "unsupportedCombination": "Questa combinazione di tipo di file e sorgente selezionata non è ancora supportata."
+    },
+    "splitPage": {
+      "title": "Dividi PDF",
+      "description": "Carica un PDF, imposta i punti di divisione tra le pagine e scarica le parti che ti servono.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui o fai clic per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "previewLabel": "Anteprima pagine",
+      "splitHint": "Fai clic sulle forbici tra due pagine per dividere lì. Questo crea più parti.",
+      "pageAlt": "Pagina {{page}}",
+      "splitHere": "Dividi qui",
+      "splitOn": "Divisione attiva",
+      "partsLabel": "Parti da scaricare",
+      "partsHint": "Scegli quali parti vuoi scaricare.",
+      "partRange": "Pagine {{start}}–{{end}}",
+      "selectAll": "Seleziona tutto",
+      "downloadSelected": "Scarica selezione"
+    },
+    "mergePage": {
+      "description": "Seleziona più file PDF e disponili nell'ordine desiderato.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina PDF qui o fai clic per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "orderLabel": "Ordine",
+      "mergeBtn": "Unisci",
+      "resetBtn": "Reimposta",
+      "resultReady": "PDF unito pronto per il download",
+      "downloadResult": "Scarica PDF",
+      "moveUp": "Sposta in alto",
+      "moveDown": "Sposta in basso"
+    }
+  },
+  "footer": {
+    "feedback": "Feedback",
+    "github": "GitHub"
+  },
+  "placeholder": {
+    "comingSoon": "Funzionalità in arrivo.",
+    "backToOverview": "Torna alla panoramica"
+  },
+  "languages": {
+    "de": "Tedesco",
+    "en": "Inglese",
+    "fr": "Francese",
+    "es": "Spagnolo",
+    "it": "Italiano",
+    "pt": "Portoghese",
+    "tr": "Turco"
+  }
+}
+

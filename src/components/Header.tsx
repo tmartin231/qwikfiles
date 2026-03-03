@@ -8,7 +8,22 @@ import i18n from "@/i18n.ts";
 const LANGUAGES = [
   { code: "de", labelKey: "languages.de" },
   { code: "en", labelKey: "languages.en" },
+  { code: "fr", labelKey: "languages.fr" },
+  { code: "es", labelKey: "languages.es" },
+  { code: "it", labelKey: "languages.it" },
+  { code: "pt", labelKey: "languages.pt" },
+  { code: "tr", labelKey: "languages.tr" },
 ] as const;
+
+const LANGUAGE_FLAGS: Record<string, string> = {
+  de: "🇩🇪",
+  en: "🇬🇧",
+  fr: "🇫🇷",
+  es: "🇪🇸",
+  it: "🇮🇹",
+  pt: "🇧🇷",
+  tr: "🇹🇷",
+};
 
 const THEME_KEY = "qwikfiles-theme";
 
@@ -119,12 +134,24 @@ export function Header() {
           onClick={() => setLanguageModalOpen(false)}
         >
           <div
-            className="w-full max-w-sm rounded-xl border border-border bg-background p-6 shadow-lg"
+            className="w-full max-w-sm rounded-xl border border-border bg-background p-6 shadow-lg relative"
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              type="button"
+              onClick={() => setLanguageModalOpen(false)}
+              className={cn(
+                "absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground",
+                "hover:bg-muted hover:text-foreground",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+              )}
+              aria-label={t("placeholder.backToOverview")}
+            >
+              <span className="text-base leading-none">×</span>
+            </button>
             <h2
               id="language-modal-title"
-              className="mb-4 text-lg font-semibold text-foreground"
+              className="mb-4 pr-6 text-lg font-semibold text-foreground"
             >
               {t("header.chooseLanguage")}
             </h2>
@@ -135,13 +162,16 @@ export function Header() {
                     type="button"
                     onClick={() => changeLanguage(code)}
                     className={cn(
-                      "w-full rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors",
+                      "w-full rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors cursor-pointer flex items-center gap-3",
                       i18n.language === code
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground",
                     )}
                   >
-                    {t(labelKey)}
+                    <span className="text-lg leading-none">
+                      {LANGUAGE_FLAGS[code] ?? "🏳️"}
+                    </span>
+                    <span>{t(labelKey)}</span>
                   </button>
                 </li>
               ))}

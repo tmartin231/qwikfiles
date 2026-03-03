@@ -224,6 +224,11 @@
   },
   "languages": {
     "de": "Deutsch",
-    "en": "English"
+    "en": "English",
+    "fr": "Französisch",
+    "es": "Spanisch",
+    "it": "Italienisch",
+    "pt": "Portugiesisch",
+    "tr": "Türkisch"
   }
 }

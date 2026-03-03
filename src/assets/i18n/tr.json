@@ -1,0 +1,235 @@
+{
+  "common": {
+    "appName": "qwikfiles",
+    "tagline": "Simple Convert"
+  },
+  "header": {
+    "themeLight": "Açık moda geç",
+    "themeDark": "Koyu moda geç",
+    "language": "Dil",
+    "chooseLanguage": "Dil seç"
+  },
+  "images": {
+    "title": "Görseller",
+    "subtitle": "Bir işlem seç",
+    "dropzoneHint": "Bir görseli buraya sürükle veya seçmek için tıkla",
+    "dropzoneActive": "Yüklemek için bırak",
+    "removeFile": "Kaldır",
+    "addMoreFiles": "Daha fazla dosya ekle",
+    "imageLabel": "Görsel",
+    "downloadResult": "İndir",
+    "resetBtn": "Sıfırla",
+    "downloadZip": "Tümünü ZIP olarak indir",
+    "imagesReady_one": "İndirme için 1 görsel hazır",
+    "imagesReady_other": "İndirme için {{count}} görsel hazır",
+    "filesSelected_one": "1 dosya seçildi",
+    "filesSelected_other": "{{count}} dosya seçildi",
+    "multipleHint": "– birden fazla dosya desteklenir",
+    "errors": {
+      "tiffParseError": "Bu TIFF dosyası okunamadı. Bazı TIFF türleri (ör. belirli sıkıştırmalar) desteklenmiyor."
+    },
+    "convertPage": {
+      "targetFormat": "Hedef format",
+      "convertBtn": "Dönüştür",
+      "resultLabel": "Sonuç",
+      "formats": {
+        "jpg": "JPEG",
+        "png": "PNG",
+        "webp": "WebP",
+        "gif": "GIF"
+      }
+    },
+    "compressPage": {
+      "qualityLabel": "Kalite (daha düşük = daha küçük dosya)",
+      "compressBtn": "Sıkıştır",
+      "outputFormat": "Çıktı: JPEG/WebP = aynı format. PNG/GIF/SVG = WebP (kalite boyutu kontrol eder).",
+      "savings": "{{from}} → {{to}} ({{percent}}% daha küçük)",
+      "savingsLarger": "{{from}} → {{to}} ({{percent}}% daha büyük)"
+    },
+    "resizePage": {
+      "scaleLabel": "Ölçek",
+      "scaleHint": "100 = orijinal boyut, 50 = yarısı, 200 = iki katı",
+      "resizeBtn": "Yeniden boyutlandır"
+    },
+    "cropPage": {
+      "cropHint": "Kırpma alanını seçmek için görsel üzerinde sürükle",
+      "cropBtn": "Kırp",
+      "singleImageOnly": "Aynı anda yalnızca bir görsel kırpılabilir."
+    },
+    "tools": {
+      "convert": {
+        "title": "Görsel dönüştür",
+        "description": "Formatı değiştir, örn. JPG → PNG veya WebP"
+      },
+      "compress": {
+        "title": "Görsel sıkıştır",
+        "description": "Dosya boyutunu küçült, kaliteyi ayarla"
+      },
+      "resize": {
+        "title": "Görseli yeniden boyutlandır",
+        "description": "Boyutları ve çözünürlüğü değiştir"
+      },
+      "crop": {
+        "title": "Görseli kırp",
+        "description": "Bir alan seç ve kırp"
+      }
+    }
+  },
+  "files": {
+    "page": {
+      "title": "Diğer dosyaları dönüştür",
+      "description": "Markdown, JSON, TXT, CSV ve daha fazlası – yaygın metin formatları arasında dönüştür.",
+      "fileLabel": "Dosya",
+      "dropzoneHint": "Bir dosyayı buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "singleFileOnly": "Şu anda sadece tek dosya destekleniyor.",
+      "targetFormat": "Hedef format",
+      "convertBtn": "Dönüştür",
+      "resetBtn": "Sıfırla",
+      "resultReady": "Dosya indirmeye hazır",
+      "resultsReady_one": "İndirmeye hazır 1 dosya",
+      "resultsReady_other": "İndirmeye hazır {{count}} dosya",
+      "downloadResult": "İndir",
+      "downloadZip": "Tümünü ZIP olarak indir",
+      "unsupportedCombination": "Bu giriş ve hedef format kombinasyonu henüz desteklenmiyor.",
+      "genericError": "Dosya dönüştürülürken bir hata oluştu.",
+      "formats": {
+        "json": "JSON",
+        "csv": "CSV",
+        "md": "Markdown",
+        "yaml": "YAML",
+        "xml": "XML"
+      }
+    }
+  },
+  "home": {
+    "categories": {
+      "images": {
+        "title": "Görseller",
+        "description": "JPG, PNG, WebP, GIF – dönüştür, sıkıştır, ayarla"
+      },
+      "pdf": {
+        "title": "PDF",
+        "description": "PDF'leri birleştir, böl veya diğer formatlara dönüştür"
+      },
+      "files": {
+        "title": "Diğer dosyalar",
+        "description": "Markdown, JSON, TXT, CSV ve daha fazlası – dönüştür ve ayarla"
+      }
+    },
+    "mostUsed": {
+      "title": "En çok kullanılan araçlar",
+      "subtitle": "Bu tarayıcıdaki son işlemlerine göre."
+    }
+  },
+  "pdf": {
+    "tools": {
+      "merge": {
+        "title": "PDF birleştir",
+        "description": "Birden fazla PDF dosyasını tek bir belgede birleştir."
+      },
+      "split": {
+        "title": "PDF böl",
+        "description": "Seçili sayfalarla bir PDF'yi birden fazla dosyaya böl."
+      },
+      "convert": {
+        "title": "PDF dönüştür",
+        "description": "PDF'yi görseller veya metin gibi diğer formatlara dönüştür."
+      },
+      "toPdf": {
+        "title": "PDF'ye dönüştür",
+        "description": "Görselleri, HTML'yi veya metni PDF'ye dönüştür."
+      }
+    },
+    "convertPage": {
+      "title": "PDF dönüştür",
+      "description": "Bir PDF'yi Office belgelerine veya görsellere dönüştür – tamamen tarayıcıda.",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "targetLabel": "Hedef format",
+      "targets": {
+        "word": "PDF'den Word'e (DOCX)",
+        "imagesPng": "PDF'den görsellere (PNG)",
+        "imagesJpg": "PDF'den görsellere (JPG)",
+        "svg": "PDF'den SVG'ye (sayfalar SVG görüntüleri)",
+        "pptx": "PDF'den PowerPoint'e (PPTX)",
+        "html": "PDF'den HTML'ye (metin)",
+        "text": "PDF'den metne (TXT)"
+      },
+      "convertBtn": "Dönüştür",
+      "resetBtn": "Sıfırla",
+      "resultReady": "Dönüştürülen dosya indirmeye hazır",
+      "downloadResult": "Dosyayı indir"
+    },
+    "toPdfPage": {
+      "title": "PDF'ye dönüştür",
+      "description": "Görselleri, HTML'yi veya metni PDF'lere dönüştür – tamamen tarayıcıda.",
+      "fileLabel": "Kaynak dosya",
+      "dropzoneHint": "Bir dosyayı buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "targetLabel": "Kaynak türü",
+      "targets": {
+        "image": "Görselden PDF'ye (PNG/JPG vb.)",
+        "svg": "SVG'den PDF'ye",
+        "html": "HTML'den PDF'ye (yalnızca metin)",
+        "text": "Metinden PDF'ye (TXT/Markdown)",
+        "docx": "Word'den PDF'ye (DOCX)",
+        "pptx": "PowerPoint'ten PDF'ye (PPTX)"
+      },
+      "convertBtn": "PDF'ye dönüştür",
+      "resetBtn": "Sıfırla",
+      "resultReady": "PDF indirmeye hazır",
+      "downloadResult": "PDF indir",
+      "unsupportedCombination": "Bu dosya türü ve seçilen kaynak kombinasyonu henüz desteklenmiyor."
+    },
+    "splitPage": {
+      "title": "PDF böl",
+      "description": "Bir PDF yükle, sayfalar arasına bölme noktaları ekle ve istediğin parçaları indir.",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "previewLabel": "Sayfa önizlemesi",
+      "splitHint": "İki sayfa arasındaki makas simgesine tıklayarak orada böl. Böylece birden fazla parça oluşur.",
+      "pageAlt": "Sayfa {{page}}",
+      "splitHere": "Burada böl",
+      "splitOn": "Bölme etkin",
+      "partsLabel": "İndirilecek parçalar",
+      "partsHint": "Hangi parçaları indirmek istediğini seç.",
+      "partRange": "Sayfalar {{start}}–{{end}}",
+      "selectAll": "Tümünü seç",
+      "downloadSelected": "Seçilenleri indir"
+    },
+    "mergePage": {
+      "description": "Birden fazla PDF dosyası seç ve istediğin sıraya göre düzenle.",
+      "fileLabel": "PDF dosyaları",
+      "dropzoneHint": "PDF'leri buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "orderLabel": "Sıra",
+      "mergeBtn": "Birleştir",
+      "resetBtn": "Sıfırla",
+      "resultReady": "Birleştirilmiş PDF indirmeye hazır",
+      "downloadResult": "PDF indir",
+      "moveUp": "Yukarı taşı",
+      "moveDown": "Aşağı taşı"
+    }
+  },
+  "footer": {
+    "feedback": "Geri bildirim",
+    "github": "GitHub"
+  },
+  "placeholder": {
+    "comingSoon": "Yakında geliyor.",
+    "backToOverview": "Genel bakışa geri dön"
+  },
+  "languages": {
+    "de": "Almanca",
+    "en": "İngilizce",
+    "fr": "Fransızca",
+    "es": "İspanyolca",
+    "it": "İtalyanca",
+    "pt": "Portekizce",
+    "tr": "Türkçe"
+  }
+}
+
