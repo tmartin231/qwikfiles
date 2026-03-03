@@ -109,11 +109,27 @@
       },
       "pdf": {
         "title": "PDF",
-        "description": "Create, merge, split PDFs or convert to other formats"
+        "description": "Merge, split PDFs or convert to other formats"
       },
       "files": {
         "title": "Other files",
         "description": "Markdown, JSON, TXT, CSV and more – convert and adjust"
+      }
+    }
+  },
+  "pdf": {
+    "tools": {
+      "merge": {
+        "title": "Merge PDFs",
+        "description": "Combine multiple PDF files into a single document."
+      },
+      "split": {
+        "title": "Split PDF",
+        "description": "Split one PDF into multiple files with selected pages."
+      },
+      "convert": {
+        "title": "Convert PDF",
+        "description": "Convert PDF into other formats like images or text."
       }
     }
   },

@@ -109,11 +109,27 @@
       },
       "pdf": {
         "title": "PDF",
-        "description": "PDF erstellen, zusammenführen, teilen oder in andere Formate umwandeln"
+        "description": "PDF zusammenführen, teilen oder in andere Formate umwandeln"
       },
       "files": {
         "title": "Andere Dateien",
         "description": "Markdown, JSON, TXT, CSV und mehr – konvertieren und anpassen"
+      }
+    }
+  },
+  "pdf": {
+    "tools": {
+      "merge": {
+        "title": "PDF zusammenführen",
+        "description": "Mehrere PDF-Dateien zu einer kombinieren."
+      },
+      "split": {
+        "title": "PDF teilen",
+        "description": "Ein PDF in mehrere Dateien mit ausgewählten Seiten aufteilen."
+      },
+      "convert": {
+        "title": "PDF konvertieren",
+        "description": "PDF in andere Formate wie Bilder oder Text umwandeln."
       }
     }
   },
