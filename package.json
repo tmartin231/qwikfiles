@@ -1,7 +1,7 @@
 {
-  "name": "modo",
+  "name": "qwikfiles",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.2.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "fast-xml-parser": "^5.4.2",
     "i18next": "^25.8.13",
     "jszip": "^3.10.1",
     "lucide-react": "^0.575.0",
@@ -23,7 +24,8 @@
     "react-router-dom": "^7.13.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.1",
-    "utif": "^3.1.0"
+    "utif": "^3.1.0",
+    "yaml": "^2.8.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

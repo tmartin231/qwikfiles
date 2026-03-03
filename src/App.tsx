@@ -7,6 +7,7 @@ import { ImageConvert } from "@/pages/ImageConvert";
 import { ImageCrop } from "@/pages/ImageCrop";
 import { ImageResize } from "@/pages/ImageResize";
 import { Images } from "@/pages/Images";
+import { Files } from "@/pages/Files";
 import { Placeholder } from "@/pages/Placeholder";
 
 function Layout() {
@@ -35,10 +36,7 @@ function App() {
           path="pdf"
           element={<Placeholder title="PDF" />}
         />
-        <Route
-          path="files"
-          element={<Placeholder title="Andere Dateien" />}
-        />
+        <Route path="files" element={<Files />} />
       </Route>
     </Routes>
   );

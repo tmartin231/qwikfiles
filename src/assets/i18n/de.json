@@ -74,6 +74,33 @@
       }
     }
   },
+  "files": {
+    "page": {
+      "title": "Andere Dateien konvertieren",
+      "description": "Markdown, JSON, TXT, CSV und mehr – zwischen gängigen Textformaten umwandeln.",
+      "fileLabel": "Datei",
+      "dropzoneHint": "Datei hierher ziehen oder Klicken zum Auswählen",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "singleFileOnly": "Aktuell wird nur eine Datei gleichzeitig unterstützt.",
+      "targetFormat": "Zielformat",
+      "convertBtn": "Konvertieren",
+      "resetBtn": "Zurücksetzen",
+      "resultReady": "Datei zum Download bereit",
+      "resultsReady_one": "1 Datei zum Download bereit",
+      "resultsReady_other": "{{count}} Dateien zum Download bereit",
+      "downloadResult": "Herunterladen",
+      "downloadZip": "Alle als ZIP herunterladen",
+      "unsupportedCombination": "Diese Kombination aus Eingabe- und Zielformat wird noch nicht unterstützt.",
+      "genericError": "Beim Konvertieren ist ein Fehler aufgetreten.",
+      "formats": {
+        "json": "JSON",
+        "csv": "CSV",
+        "md": "Markdown",
+        "yaml": "YAML",
+        "xml": "XML"
+      }
+    }
+  },
   "home": {
     "categories": {
       "images": {

@@ -48,7 +48,13 @@ export function FileDropzone({
   const [isDragActive, setIsDragActive] = React.useState(false);
 
   const acceptStr = Object.keys(accept).join(",");
-  const extensions = Object.values(accept).flat();
+  const extensions = Array.from(
+    new Set(
+      Object.values(accept)
+        .flat()
+        .map((ext) => ext.toLowerCase()),
+    ),
+  );
   const files = multiple ? (Array.isArray(value) ? value : value ? [value] : []) : [];
   const hasFiles = multiple ? files.length > 0 : !!value && !Array.isArray(value);
   const singleFile = !multiple ? (Array.isArray(value) ? null : value ?? null) : null;
@@ -189,10 +195,12 @@ export function FileDropzone({
             <p className="text-center text-sm text-muted-foreground">
               {isDragActive && activeHint ? activeHint : hint}
             </p>
-            <p className="text-xs text-muted-foreground/80">
-              {extensions.join(", ")}
-              {multiple && multipleHint ? multipleHint : ""}
-            </p>
+            {!!extensions.length && (
+              <p className="text-xs text-muted-foreground/80">
+                {extensions.join(", ")}
+                {multiple && multipleHint ? multipleHint : ""}
+              </p>
+            )}
           </>
         )}
       </div>
