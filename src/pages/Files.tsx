@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FileDropzone } from "@/components/ui/file-dropzone";
+import { BackLink } from "@/components/BackLink";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { baseName, decodeImageFile } from "@/lib/image-utils";
@@ -16,7 +17,6 @@ import { Download, FileArchive, FileCode } from "lucide-react";
 import JSZip from "jszip";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 type TextFormat = "json" | "csv" | "md" | "yaml" | "xml";
 
@@ -115,15 +115,16 @@ function jsonToMarkdownTable(data: unknown): string {
   const headers = Array.from(headerSet);
   const headerRow = `| ${headers.join(" | ")} |`;
   const separator = `| ${headers.map(() => "---").join(" | ")} |`;
-  const rows = objects.map((obj) =>
-    `| ${headers
-      .map((h) => {
-        const v = obj?.[h];
-        if (v === null || v === undefined) return "";
-        if (typeof v === "string") return v.replace(/\n/g, " ");
-        return JSON.stringify(v);
-      })
-      .join(" | ")} |`,
+  const rows = objects.map(
+    (obj) =>
+      `| ${headers
+        .map((h) => {
+          const v = obj?.[h];
+          if (v === null || v === undefined) return "";
+          if (typeof v === "string") return v.replace(/\n/g, " ");
+          return JSON.stringify(v);
+        })
+        .join(" | ")} |`,
   );
   return [headerRow, separator, ...rows].join("\n");
 }
@@ -146,7 +147,10 @@ function parseYamlSafe(text: string): unknown | null {
 
 function parseXmlSafe(text: string): unknown | null {
   try {
-    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "@_" });
+    const parser = new XMLParser({
+      ignoreAttributes: false,
+      attributeNamePrefix: "@_",
+    });
     return parser.parse(text);
   } catch {
     return null;
@@ -267,9 +271,7 @@ export function Files() {
       if (e instanceof Error && e.message === "UNSUPPORTED_COMBINATION") {
         setError(t("files.page.unsupportedCombination"));
       } else {
-        setError(
-          e instanceof Error ? e.message : t("files.page.genericError"),
-        );
+        setError(e instanceof Error ? e.message : t("files.page.genericError"));
       }
       setResults([]);
     } finally {
@@ -314,12 +316,7 @@ export function Files() {
 
   return (
     <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
-      <Link
-        to="/"
-        className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        ← {t("placeholder.backToOverview")}
-      </Link>
+      <BackLink to="/" />
 
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
@@ -425,11 +422,7 @@ export function Files() {
               {t("files.page.downloadResult")}
             </a>
           ) : (
-            <Button
-              type="button"
-              className="gap-2"
-              onClick={handleDownloadZip}
-            >
+            <Button type="button" className="gap-2" onClick={handleDownloadZip}>
               <FileArchive className="h-4 w-4" aria-hidden />
               {t("files.page.downloadZip")}
             </Button>
@@ -439,4 +432,3 @@ export function Files() {
     </main>
   );
 }
-

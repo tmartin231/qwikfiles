@@ -1,4 +1,5 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { BackLink } from "@/components/BackLink";
 import { FileDropzone } from "@/components/ui/file-dropzone";
 import {
   Select,
@@ -14,7 +15,6 @@ import { ArrowLeftRight, Download, FileArchive } from "lucide-react";
 import JSZip from "jszip";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 const FORMATS = [
   { value: "image/jpeg", key: "jpg", ext: "jpg" },
@@ -203,12 +203,7 @@ export function ImageConvert() {
 
   return (
     <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
-      <Link
-        to="/images"
-        className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        ← {t("placeholder.backToOverview")}
-      </Link>
+      <BackLink to="/images" />
 
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">

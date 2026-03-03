@@ -1,5 +1,13 @@
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { FileDropzone } from "@/components/ui/file-dropzone";
+import { BackLink } from "@/components/BackLink";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -12,7 +20,6 @@ import { Download, FileArchive, Shrink } from "lucide-react";
 import JSZip from "jszip";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 function compressImage(
   file: File,
@@ -38,7 +45,9 @@ function compressImage(
           ctx.drawImage(img, 0, 0);
           canvas.toBlob(
             (blob) =>
-              blob ? resolve({ blob, ext }) : reject(new Error("Compression failed")),
+              blob
+                ? resolve({ blob, ext })
+                : reject(new Error("Compression failed")),
             mime,
             q,
           );
@@ -65,7 +74,9 @@ function compressImage(
       ctx.drawImage(img, 0, 0);
       canvas.toBlob(
         (blob) =>
-          blob ? resolve({ blob, ext }) : reject(new Error("Compression failed")),
+          blob
+            ? resolve({ blob, ext })
+            : reject(new Error("Compression failed")),
         mime,
         q,
       );
@@ -89,7 +100,13 @@ export function ImageCompress() {
   const [files, setFiles] = useState<File[]>([]);
   const [quality, setQuality] = useState(80);
   const [results, setResults] = useState<
-    { blob: Blob; baseName: string; ext: string; originalSize: number; newSize: number }[]
+    {
+      blob: Blob;
+      baseName: string;
+      ext: string;
+      originalSize: number;
+      newSize: number;
+    }[]
   >([]);
   const [error, setError] = useState<string | null>(null);
   const [compressing, setCompressing] = useState(false);
@@ -170,12 +187,7 @@ export function ImageCompress() {
 
   return (
     <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
-      <Link
-        to="/images"
-        className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        ← {t("placeholder.backToOverview")}
-      </Link>
+      <BackLink to="/images" />
 
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
@@ -208,15 +220,15 @@ export function ImageCompress() {
               hint={t("images.dropzoneHint")}
               activeHint={t("images.dropzoneActive")}
               removeLabel={t("images.removeFile")}
-              fileCountLabel={(count) =>
-                t("images.filesSelected", { count })
-              }
+              fileCountLabel={(count) => t("images.filesSelected", { count })}
               multipleHint={t("images.multipleHint")}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="quality">{t("images.compressPage.qualityLabel")}</Label>
+            <Label htmlFor="quality">
+              {t("images.compressPage.qualityLabel")}
+            </Label>
             <div className="flex items-center gap-3">
               <input
                 id="quality"
@@ -269,7 +281,10 @@ export function ImageCompress() {
             {t("images.imagesReady", { count: results.length })}
           </p>
           {(() => {
-            const totalOriginal = results.reduce((s, r) => s + r.originalSize, 0);
+            const totalOriginal = results.reduce(
+              (s, r) => s + r.originalSize,
+              0,
+            );
             const totalNew = results.reduce((s, r) => s + r.newSize, 0);
             if (totalOriginal <= 0) return null;
             const percentSmaller = Math.round(
@@ -304,7 +319,11 @@ export function ImageCompress() {
                 {t("images.downloadResult")}
               </a>
             ) : (
-              <Button type="button" className="gap-2" onClick={handleDownloadZip}>
+              <Button
+                type="button"
+                className="gap-2"
+                onClick={handleDownloadZip}
+              >
                 <FileArchive className="h-4 w-4" aria-hidden />
                 {t("images.downloadZip")}
               </Button>

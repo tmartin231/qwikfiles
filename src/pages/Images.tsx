@@ -8,6 +8,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { BackLink } from "@/components/BackLink";
 
 const IMAGE_TOOLS = [
   {
@@ -49,12 +50,7 @@ export function Images() {
 
   return (
     <main className="mx-auto flex min-h-full w-full max-w-4xl flex-1 flex-col px-4 py-8">
-      <Link
-        to="/"
-        className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        ← {t("placeholder.backToOverview")}
-      </Link>
+      <BackLink to="/" />
 
       <div className="mb-8 flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">

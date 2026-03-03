@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FileDropzone } from "@/components/ui/file-dropzone";
+import { BackLink } from "@/components/BackLink";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -18,7 +19,6 @@ import {
 import { Download, Crop } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 type CropRect = { x: number; y: number; w: number; h: number };
 
@@ -86,7 +86,11 @@ export function ImageCrop() {
         setImageUrl(objectUrlRef.current);
       })
       .catch((err) => {
-        if (!cancelled && err instanceof Error && err.message === TIFF_PARSE_ERROR) {
+        if (
+          !cancelled &&
+          err instanceof Error &&
+          err.message === TIFF_PARSE_ERROR
+        ) {
           setError(t("images.errors.tiffParseError"));
         }
       });
@@ -307,12 +311,7 @@ export function ImageCrop() {
 
   return (
     <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
-      <Link
-        to="/images"
-        className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        ← {t("placeholder.backToOverview")}
-      </Link>
+      <BackLink to="/images" />
 
       <div className="mb-6 flex items-center gap-3">
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400">
