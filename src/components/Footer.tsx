@@ -10,7 +10,7 @@ export function Footer() {
   const mailto = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent(FEEDBACK_SUBJECT)}`;
 
   return (
-    <footer className="mt-auto border-t border-border/80 bg-muted/30 py-6">
+    <footer className="mt-4 border-t border-border/80 bg-muted/30 py-6">
       <div className="mx-auto flex max-w-[1820px] flex-row items-center justify-center gap-4 px-6">
         <a
           href="https://github.com/tmartin231/qwikfiles"
