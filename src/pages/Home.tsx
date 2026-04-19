@@ -154,13 +154,7 @@ export function Home() {
   return (
     <main className="flex w-full">
       <div className="mx-auto w-full max-w-4xl flex flex-col items-center justify-center px-4 sm:px-6">
-        <img
-          src="/qwik_winky.png"
-          alt=""
-          role="presentation"
-          className="hidden object-contain sm:block sm:w-96 sm:max-h-[420px]"
-        />
-        <div className="relative z-10 flex w-full flex-col gap-6 sm:-mt-34">
+        <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col gap-4 sm:gap-6 md:flex-row">
             {categories.map(
             ({ to, key, icon: Icon, className, iconClassName }) => (
