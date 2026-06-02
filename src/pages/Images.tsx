@@ -3,6 +3,8 @@ import {
   Crop,
   Image as ImageIcon,
   Maximize2,
+  RotateCw,
+  ShieldOff,
   Shrink,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -43,6 +45,22 @@ const IMAGE_TOOLS = [
       "from-amber-500/10 to-orange-500/10 border-amber-500/20 hover:border-amber-500/40",
     iconClassName: "text-amber-600 dark:text-amber-400",
   },
+  {
+    key: "rotate",
+    to: "/images/rotate",
+    icon: RotateCw,
+    className:
+      "from-cyan-500/10 to-sky-500/10 border-cyan-500/20 hover:border-cyan-500/40",
+    iconClassName: "text-cyan-600 dark:text-cyan-400",
+  },
+  {
+    key: "stripMetadata",
+    to: "/images/strip-metadata",
+    icon: ShieldOff,
+    className:
+      "from-slate-500/10 to-zinc-500/10 border-slate-500/20 hover:border-slate-500/40",
+    iconClassName: "text-slate-600 dark:text-slate-400",
+  },
 ] as const;
 
 export function Images() {
@@ -66,7 +84,7 @@ export function Images() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {IMAGE_TOOLS.map(({ key, to, icon: Icon, className, iconClassName }) => (
           <Link
             key={key}

@@ -36,8 +36,27 @@
         "jpg": "JPEG",
         "png": "PNG",
         "webp": "WebP",
-        "gif": "GIF"
+        "gif": "GIF",
+        "avif": "AVIF",
+        "bmp": "BMP"
       }
+    },
+    "rotatePage": {
+      "actionLabel": "İşlem",
+      "applyBtn": "Uygula",
+      "genericError": "Görüntü işlenirken bir hata oluştu.",
+      "actions": {
+        "rotate90": "90° sağa",
+        "rotate270": "90° sola",
+        "rotate180": "180°",
+        "flipH": "Yatay çevir",
+        "flipV": "Dikey çevir"
+      }
+    },
+    "stripMetadataPage": {
+      "hint": "Görüntü yeniden kodlanır – EXIF ve diğer meta veriler (GPS, kamera, tarih) kaldırılır. Biçim ve kalite hafifçe değişebilir.",
+      "stripBtn": "Meta verileri kaldır",
+      "genericError": "Meta veriler kaldırılırken bir hata oluştu."
     },
     "compressPage": {
       "qualityLabel": "Kalite (daha düşük = daha küçük dosya)",
@@ -72,6 +91,14 @@
       "crop": {
         "title": "Görseli kırp",
         "description": "Bir alan seç ve kırp"
+      },
+      "rotate": {
+        "title": "Döndür ve çevir",
+        "description": "Yönü değiştir veya aynala"
+      },
+      "stripMetadata": {
+        "title": "Meta verileri kaldır",
+        "description": "EXIF ve GPS'i görüntülerden sil"
       }
     }
   },
@@ -82,7 +109,6 @@
       "fileLabel": "Dosya",
       "dropzoneHint": "Bir dosyayı buraya sürükle veya seçmek için tıkla",
       "dropzoneActive": "Yüklemek için bırak",
-      "singleFileOnly": "Şu anda sadece tek dosya destekleniyor.",
       "targetFormat": "Hedef format",
       "convertBtn": "Dönüştür",
       "resetBtn": "Sıfırla",
@@ -98,7 +124,8 @@
         "csv": "CSV",
         "md": "Markdown",
         "yaml": "YAML",
-        "xml": "XML"
+        "xml": "XML",
+        "txt": "Metin (TXT)"
       }
     }
   },
@@ -139,7 +166,49 @@
       "toPdf": {
         "title": "PDF'ye dönüştür",
         "description": "Görselleri, HTML'yi veya metni PDF'ye dönüştür."
+      },
+      "compress": {
+        "title": "PDF sıkıştır",
+        "description": "Sayfaları görsel olarak yeniden sıkıştırarak dosya boyutunu küçült."
+      },
+      "rotate": {
+        "title": "PDF döndür",
+        "description": "Bir PDF'nin tüm sayfalarını döndür."
       }
+    },
+    "compressPage": {
+      "title": "PDF sıkıştır",
+      "description": "Sayfalar JPEG olarak yeniden gömülür – metin artık aranabilir değildir, ancak dosya genelde çok daha küçük olur.",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "qualityLabel": "JPEG kalitesi",
+      "qualityHint": "Düşük = daha küçük dosya, yüksek = taramalarda daha iyi okunabilirlik.",
+      "scaleLabel": "İşleme çözünürlüğü",
+      "compressBtn": "Sıkıştır",
+      "resetBtn": "Sıfırla",
+      "resultReady": "Sıkıştırılmış PDF indirmeye hazır",
+      "downloadResult": "PDF indir",
+      "genericError": "PDF sıkıştırılırken bir hata oluştu."
+    },
+    "rotatePage": {
+      "title": "PDF döndür",
+      "description": "PDF'nin tüm sayfalarını seçilen açı kadar döndürür.",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle veya seçmek için tıkla",
+      "dropzoneActive": "Yüklemek için bırak",
+      "rotationLabel": "Döndürme",
+      "rotationHint": "Belgedeki tüm sayfalara uygulanır.",
+      "rotations": {
+        "90": "90° saat yönünde",
+        "180": "180°",
+        "270": "90° saat yönünün tersine"
+      },
+      "rotateBtn": "Döndür",
+      "resetBtn": "Sıfırla",
+      "resultReady": "Döndürülmüş PDF indirmeye hazır",
+      "downloadResult": "PDF indir",
+      "genericError": "PDF döndürülürken bir hata oluştu."
     },
     "convertPage": {
       "title": "PDF dönüştür",

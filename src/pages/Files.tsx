@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { incrementFeatureUsage } from "@/lib/usage-tracking";
 
-type TextFormat = "json" | "csv" | "md" | "yaml" | "xml";
+type TextFormat = "json" | "csv" | "md" | "yaml" | "xml" | "txt";
 
 const TARGET_FORMATS: { value: TextFormat; labelKey: string; ext: string }[] = [
   { value: "json", labelKey: "files.page.formats.json", ext: "json" },
@@ -27,10 +27,12 @@ const TARGET_FORMATS: { value: TextFormat; labelKey: string; ext: string }[] = [
   { value: "md", labelKey: "files.page.formats.md", ext: "md" },
   { value: "yaml", labelKey: "files.page.formats.yaml", ext: "yaml" },
   { value: "xml", labelKey: "files.page.formats.xml", ext: "xml" },
+  { value: "txt", labelKey: "files.page.formats.txt", ext: "txt" },
 ];
 
 function detectFormat(file: File, text: string): TextFormat | "txt" {
   const name = file.name.toLowerCase();
+  if (name.endsWith(".txt") || name.endsWith(".log")) return "txt";
   if (name.endsWith(".json")) return "json";
   if (name.endsWith(".csv") || name.endsWith(".tsv")) return "csv";
   if (name.endsWith(".md") || name.endsWith(".markdown")) return "md";
@@ -179,6 +181,12 @@ function convertText(
 ): string | null {
   if (from === to) return input;
 
+  if (from === "md" && to === "txt") return input;
+  if (from === "txt" && to === "md") return input;
+  if (from === "txt" && to === "txt") return input;
+
+  if (from === "md") return null;
+
   // Alles über eine gemeinsame JSON-Repräsentation routen
   let jsonValue: unknown | null = null;
 
@@ -186,21 +194,22 @@ function convertText(
     jsonValue = parseJsonSafe(input);
   } else if (from === "csv") {
     jsonValue = csvToJson(input);
-  } else if (from === "md") {
-    // Aktuell keine generische MD→JSON-Analyse
-    return null;
   } else if (from === "yaml") {
     jsonValue = parseYamlSafe(input);
   } else if (from === "xml") {
     jsonValue = parseXmlSafe(input);
-  } else {
-    // txt → nur sinnvoll nach JSON parsbar
-    jsonValue = parseJsonSafe(input);
+  } else if (from === "txt") {
+    const parsed = parseJsonSafe(input);
+    jsonValue = parsed !== null ? parsed : input;
   }
 
   if (jsonValue === null) return null;
 
-  // JSON-Repräsentation in das Zielformat wandeln
+  if (to === "txt") {
+    if (typeof jsonValue === "string") return jsonValue;
+    return JSON.stringify(jsonValue, null, 2);
+  }
+
   if (to === "json") {
     return JSON.stringify(jsonValue, null, 2);
   }
@@ -235,10 +244,6 @@ export function Files() {
   const [error, setError] = useState<string | null>(null);
   const [converting, setConverting] = useState(false);
 
-  useEffect(() => {
-    incrementFeatureUsage("files.convert");
-  }, []);
-
   const handleFileChange = useCallback((v: File | File[] | null) => {
     if (v === null) setFiles([]);
     else setFiles(Array.isArray(v) ? v : [v]);
@@ -272,6 +277,7 @@ export function Files() {
         });
       }
       setResults(nextResults);
+      incrementFeatureUsage("files.convert");
     } catch (e) {
       if (e instanceof Error && e.message === "UNSUPPORTED_COMBINATION") {
         setError(t("files.page.unsupportedCombination"));
@@ -365,10 +371,9 @@ export function Files() {
               hint={t("files.page.dropzoneHint")}
               activeHint={t("files.page.dropzoneActive")}
               removeLabel={t("images.removeFile")}
+              fileCountLabel={(count) => t("images.filesSelected", { count })}
+              multipleHint={t("images.multipleHint")}
             />
-            <p className="text-xs text-muted-foreground">
-              {t("images.filesSelected", { count: files.length })}
-            </p>
           </div>
 
           <div className="space-y-2">

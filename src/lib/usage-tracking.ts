@@ -3,10 +3,14 @@ export type FeatureId =
   | "images.compress"
   | "images.resize"
   | "images.crop"
+  | "images.rotate"
+  | "images.stripMetadata"
   | "pdf.merge"
   | "pdf.split"
   | "pdf.convert"
   | "pdf.toPdf"
+  | "pdf.compress"
+  | "pdf.rotate"
   | "files.convert";
 
 export type FeatureUsageMap = Partial<Record<FeatureId, number>>;

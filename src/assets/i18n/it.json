@@ -36,8 +36,27 @@
         "jpg": "JPEG",
         "png": "PNG",
         "webp": "WebP",
-        "gif": "GIF"
+        "gif": "GIF",
+        "avif": "AVIF",
+        "bmp": "BMP"
       }
+    },
+    "rotatePage": {
+      "actionLabel": "Azione",
+      "applyBtn": "Applica",
+      "genericError": "Si è verificato un errore durante l'elaborazione dell'immagine.",
+      "actions": {
+        "rotate90": "90° destra",
+        "rotate270": "90° sinistra",
+        "rotate180": "180°",
+        "flipH": "Capovolgi orizzontale",
+        "flipV": "Capovolgi verticale"
+      }
+    },
+    "stripMetadataPage": {
+      "hint": "L'immagine viene ricodificata: i metadati EXIF (GPS, fotocamera, data) vengono rimossi. Formato e qualità possono cambiare leggermente.",
+      "stripBtn": "Rimuovi metadati",
+      "genericError": "Si è verificato un errore durante la rimozione dei metadati."
     },
     "compressPage": {
       "qualityLabel": "Qualità (più bassa = file più piccolo)",
@@ -72,6 +91,14 @@
       "crop": {
         "title": "Ritaglia immagine",
         "description": "Seleziona e ritaglia un'area"
+      },
+      "rotate": {
+        "title": "Ruota e capovolgi",
+        "description": "Cambia orientamento o specchio"
+      },
+      "stripMetadata": {
+        "title": "Rimuovi metadati",
+        "description": "Rimuovi EXIF e GPS dalle immagini"
       }
     }
   },
@@ -82,7 +109,6 @@
       "fileLabel": "File",
       "dropzoneHint": "Trascina un file qui o fai clic per selezionare",
       "dropzoneActive": "Rilascia per caricare",
-      "singleFileOnly": "Attualmente è supportato un solo file alla volta.",
       "targetFormat": "Formato di destinazione",
       "convertBtn": "Converti",
       "resetBtn": "Reimposta",
@@ -98,7 +124,8 @@
         "csv": "CSV",
         "md": "Markdown",
         "yaml": "YAML",
-        "xml": "XML"
+        "xml": "XML",
+        "txt": "Testo (TXT)"
       }
     }
   },
@@ -139,7 +166,49 @@
       "toPdf": {
         "title": "Converti in PDF",
         "description": "Trasforma immagini, HTML o testo in PDF."
+      },
+      "compress": {
+        "title": "Comprimi PDF",
+        "description": "Riduci la dimensione ricomprimendo le pagine come immagini."
+      },
+      "rotate": {
+        "title": "Ruota PDF",
+        "description": "Ruota tutte le pagine di un PDF."
       }
+    },
+    "compressPage": {
+      "title": "Comprimi PDF",
+      "description": "Le pagine vengono reincorporate come JPEG: il testo non è più ricercabile, ma il file è spesso molto più piccolo.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui o clicca per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "qualityLabel": "Qualità JPEG",
+      "qualityHint": "Più basso = file più piccolo, più alto = migliore leggibilità delle scansioni.",
+      "scaleLabel": "Risoluzione di rendering",
+      "compressBtn": "Comprimi",
+      "resetBtn": "Reimposta",
+      "resultReady": "PDF compresso pronto per il download",
+      "downloadResult": "Scarica PDF",
+      "genericError": "Si è verificato un errore durante la compressione del PDF."
+    },
+    "rotatePage": {
+      "title": "Ruota PDF",
+      "description": "Ruota tutte le pagine del PDF dell'angolo selezionato.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui o clicca per selezionare",
+      "dropzoneActive": "Rilascia per caricare",
+      "rotationLabel": "Rotazione",
+      "rotationHint": "Si applica a tutte le pagine del documento.",
+      "rotations": {
+        "90": "90° in senso orario",
+        "180": "180°",
+        "270": "90° in senso antiorario"
+      },
+      "rotateBtn": "Ruota",
+      "resetBtn": "Reimposta",
+      "resultReady": "PDF ruotato pronto per il download",
+      "downloadResult": "Scarica PDF",
+      "genericError": "Si è verificato un errore durante la rotazione del PDF."
     },
     "convertPage": {
       "title": "Converti PDF",

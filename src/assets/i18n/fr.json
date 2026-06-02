@@ -36,8 +36,27 @@
         "jpg": "JPEG",
         "png": "PNG",
         "webp": "WebP",
-        "gif": "GIF"
+        "gif": "GIF",
+        "avif": "AVIF",
+        "bmp": "BMP"
       }
+    },
+    "rotatePage": {
+      "actionLabel": "Action",
+      "applyBtn": "Appliquer",
+      "genericError": "Une erreur s'est produite lors du traitement de l'image.",
+      "actions": {
+        "rotate90": "90° à droite",
+        "rotate270": "90° à gauche",
+        "rotate180": "180°",
+        "flipH": "Miroir horizontal",
+        "flipV": "Miroir vertical"
+      }
+    },
+    "stripMetadataPage": {
+      "hint": "L'image est réencodée – les métadonnées EXIF (GPS, appareil, date) sont supprimées. Le format et la qualité peuvent légèrement changer.",
+      "stripBtn": "Supprimer les métadonnées",
+      "genericError": "Une erreur s'est produite lors de la suppression des métadonnées."
     },
     "compressPage": {
       "qualityLabel": "Qualité (plus basse = fichier plus petit)",
@@ -72,6 +91,14 @@
       "crop": {
         "title": "Recadrer une image",
         "description": "Choisir une zone et la recadrer"
+      },
+      "rotate": {
+        "title": "Pivoter et retourner",
+        "description": "Changer l'orientation ou le miroir"
+      },
+      "stripMetadata": {
+        "title": "Supprimer les métadonnées",
+        "description": "Retirer EXIF et GPS des images"
       }
     }
   },
@@ -82,7 +109,6 @@
       "fileLabel": "Fichier",
       "dropzoneHint": "Déposer un fichier ici ou cliquer pour sélectionner",
       "dropzoneActive": "Déposer pour téléverser",
-      "singleFileOnly": "Actuellement, un seul fichier à la fois est pris en charge.",
       "targetFormat": "Format cible",
       "convertBtn": "Convertir",
       "resetBtn": "Réinitialiser",
@@ -98,7 +124,8 @@
         "csv": "CSV",
         "md": "Markdown",
         "yaml": "YAML",
-        "xml": "XML"
+        "xml": "XML",
+        "txt": "Texte (TXT)"
       }
     }
   },
@@ -139,7 +166,49 @@
       "toPdf": {
         "title": "Convertir en PDF",
         "description": "Transformer des images, du HTML ou du texte en PDF."
+      },
+      "compress": {
+        "title": "Compresser le PDF",
+        "description": "Réduire la taille en recomprimant les pages en images."
+      },
+      "rotate": {
+        "title": "Pivoter le PDF",
+        "description": "Pivoter toutes les pages d'un PDF."
       }
+    },
+    "compressPage": {
+      "title": "Compresser le PDF",
+      "description": "Les pages sont réintégrées en JPEG – le texte n'est plus recherchable, mais le fichier est souvent bien plus petit.",
+      "fileLabel": "Fichier PDF",
+      "dropzoneHint": "Glissez un PDF ici ou cliquez pour sélectionner",
+      "dropzoneActive": "Relâchez pour téléverser",
+      "qualityLabel": "Qualité JPEG",
+      "qualityHint": "Plus bas = fichier plus petit, plus haut = meilleure lisibilité des scans.",
+      "scaleLabel": "Résolution de rendu",
+      "compressBtn": "Compresser",
+      "resetBtn": "Réinitialiser",
+      "resultReady": "PDF compressé prêt au téléchargement",
+      "downloadResult": "Télécharger le PDF",
+      "genericError": "Une erreur s'est produite lors de la compression."
+    },
+    "rotatePage": {
+      "title": "Pivoter le PDF",
+      "description": "Pivoter toutes les pages du PDF selon l'angle choisi.",
+      "fileLabel": "Fichier PDF",
+      "dropzoneHint": "Glissez un PDF ici ou cliquez pour sélectionner",
+      "dropzoneActive": "Relâchez pour téléverser",
+      "rotationLabel": "Rotation",
+      "rotationHint": "S'applique à toutes les pages du document.",
+      "rotations": {
+        "90": "90° sens horaire",
+        "180": "180°",
+        "270": "90° sens antihoraire"
+      },
+      "rotateBtn": "Pivoter",
+      "resetBtn": "Réinitialiser",
+      "resultReady": "PDF pivoté prêt au téléchargement",
+      "downloadResult": "Télécharger le PDF",
+      "genericError": "Une erreur s'est produite lors de la rotation."
     },
     "convertPage": {
       "title": "Convertir un PDF",

@@ -2,7 +2,13 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { BackLink } from "@/components/BackLink";
-import { FileDiff, FileInput, FileOutput } from "lucide-react";
+import {
+  FileDiff,
+  FileInput,
+  FileOutput,
+  RotateCw,
+  Shrink,
+} from "lucide-react";
 
 const PDF_TOOLS = [
   {
@@ -37,6 +43,22 @@ const PDF_TOOLS = [
       "from-rose-500/10 to-orange-500/10 border-rose-500/20 hover:border-rose-500/40",
     iconClassName: "text-rose-600 dark:text-rose-400",
   },
+  {
+    key: "compress",
+    to: "/pdf/compress",
+    icon: Shrink,
+    className:
+      "from-orange-500/10 to-amber-500/10 border-orange-500/20 hover:border-orange-500/40",
+    iconClassName: "text-orange-600 dark:text-orange-400",
+  },
+  {
+    key: "rotate",
+    to: "/pdf/rotate",
+    icon: RotateCw,
+    className:
+      "from-indigo-500/10 to-violet-500/10 border-indigo-500/20 hover:border-indigo-500/40",
+    iconClassName: "text-indigo-600 dark:text-indigo-400",
+  },
 ] as const;
 
 export function Pdf() {
@@ -60,7 +82,7 @@ export function Pdf() {
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PDF_TOOLS.map(({ key, to, icon: Icon, className, iconClassName }) => (
           <Link
             key={key}

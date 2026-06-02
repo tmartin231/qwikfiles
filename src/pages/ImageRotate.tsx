@@ -1,107 +1,110 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { BackLink } from "@/components/BackLink";
 import { FileDropzone } from "@/components/ui/file-dropzone";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
+  applyTransform,
   canvasToBlob,
-  CONVERT_FORMATS,
   loadImageToCanvas,
+  type ImageTransform,
 } from "@/lib/image-canvas";
-import { baseName, decodeImageFile, TIFF_PARSE_ERROR } from "@/lib/image-utils";
+import {
+  baseName,
+  decodeImageFile,
+  getOutputMimeAndExt,
+  TIFF_PARSE_ERROR,
+} from "@/lib/image-utils";
 import { incrementFeatureUsage } from "@/lib/usage-tracking";
-import { ArrowLeftRight, Download, FileArchive } from "lucide-react";
+import {
+  Download,
+  FileArchive,
+  FlipHorizontal,
+  FlipVertical,
+  RotateCcw,
+  RotateCw,
+} from "lucide-react";
 import JSZip from "jszip";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-async function convertImage(file: File, targetMime: string): Promise<Blob> {
+async function transformImage(
+  file: File,
+  transform: ImageTransform,
+): Promise<{ blob: Blob; ext: string }> {
   const canvas = await loadImageToCanvas(file);
-  return canvasToBlob(canvas, targetMime);
+  const transformed = applyTransform(canvas, transform);
+  const { mime, ext } = getOutputMimeAndExt(file, "resize");
+  const blob = await canvasToBlob(transformed, mime);
+  return { blob, ext };
 }
 
-export function ImageConvert() {
+const TRANSFORMS: {
+  id: ImageTransform;
+  labelKey: string;
+  icon: typeof RotateCw;
+}[] = [
+  { id: "rotate90", labelKey: "rotate90", icon: RotateCw },
+  { id: "rotate270", labelKey: "rotate270", icon: RotateCcw },
+  { id: "rotate180", labelKey: "rotate180", icon: RotateCw },
+  { id: "flipH", labelKey: "flipH", icon: FlipHorizontal },
+  { id: "flipV", labelKey: "flipV", icon: FlipVertical },
+];
+
+export function ImageRotate() {
   const { t } = useTranslation();
   const [files, setFiles] = useState<File[]>([]);
-  const [targetFormat, setTargetFormat] = useState<string>("image/png");
-  const [results, setResults] = useState<{ blob: Blob; baseName: string }[]>(
-    [],
-  );
+  const [transform, setTransform] = useState<ImageTransform>("rotate90");
+  const [results, setResults] = useState<
+    { blob: Blob; baseName: string; ext: string }[]
+  >([]);
   const [error, setError] = useState<string | null>(null);
-  const [converting, setConverting] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [resultUrls, setResultUrls] = useState<string[]>([]);
 
-  const handleConvert = useCallback(async () => {
+  const handleApply = useCallback(async () => {
     if (files.length === 0) return;
     setError(null);
-    setConverting(true);
+    setProcessing(true);
     try {
       const decoded = await Promise.all(files.map(decodeImageFile));
       const converted = await Promise.all(
         decoded.map(async (decodedFile, i) => {
           const file = files[i]!;
-          const blob = await convertImage(decodedFile, targetFormat);
-          return { blob, baseName: baseName(file.name) };
+          const { blob, ext } = await transformImage(decodedFile, transform);
+          return { blob, baseName: baseName(file.name), ext };
         }),
       );
       setResults(converted);
-      incrementFeatureUsage("images.convert");
+      incrementFeatureUsage("images.rotate");
     } catch (e) {
       const msg =
         e instanceof Error && e.message === TIFF_PARSE_ERROR
           ? t("images.errors.tiffParseError")
           : e instanceof Error
             ? e.message
-            : "Conversion failed";
+            : t("images.rotatePage.genericError");
       setError(msg);
+      setResults([]);
     } finally {
-      setConverting(false);
+      setProcessing(false);
     }
-  }, [files, targetFormat, t]);
+  }, [files, transform, t]);
 
   const handleReset = useCallback(() => {
     setFiles([]);
     setResults([]);
     setError(null);
-    setTargetFormat("image/png");
+    setTransform("rotate90");
   }, []);
-
-  const resultExt =
-    CONVERT_FORMATS.find((f) => f.value === targetFormat)?.ext ?? "png";
-
-  const handleDownloadZip = useCallback(async () => {
-    if (results.length === 0) return;
-    const zip = new JSZip();
-    results.forEach(({ blob, baseName: name }, i) => {
-      const uniqueName =
-        results.length > 1
-          ? `${name}_${i + 1}.${resultExt}`
-          : `${name}.${resultExt}`;
-      zip.file(uniqueName, blob);
-    });
-    const zipBlob = await zip.generateAsync({ type: "blob" });
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `converted-images.zip`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }, [results, resultExt]);
 
   const handleFileChange = useCallback((v: File | File[] | null) => {
     if (v === null) setFiles([]);
     else setFiles(Array.isArray(v) ? v : [v]);
   }, []);
 
-  const [resultUrls, setResultUrls] = useState<string[]>([]);
   useEffect(() => {
-    if (results.length === 0) {
+    if (!results.length) {
       setResultUrls([]);
       return;
     }
@@ -110,26 +113,43 @@ export function ImageConvert() {
     return () => urls.forEach((u) => URL.revokeObjectURL(u));
   }, [results]);
 
+  const handleDownloadZip = useCallback(async () => {
+    if (results.length === 0) return;
+    const zip = new JSZip();
+    results.forEach(({ blob, baseName: name, ext }, i) => {
+      const uniqueName =
+        results.length > 1 ? `${name}_${i + 1}.${ext}` : `${name}.${ext}`;
+      zip.file(uniqueName, blob);
+    });
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(zipBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "rotated-images.zip";
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [results]);
+
   return (
     <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
       <BackLink to="/images" />
 
       <div className="mb-6 flex items-center gap-3">
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-          <ArrowLeftRight className="h-6 w-6" aria-hidden />
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+          <RotateCw className="h-6 w-6" aria-hidden />
         </div>
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            {t("images.tools.convert.title")}
+            {t("images.tools.rotate.title")}
           </h1>
           <p className="text-sm text-muted-foreground">
-            {t("images.tools.convert.description")}
+            {t("images.tools.rotate.description")}
           </p>
         </div>
       </div>
 
       <Card>
-        <CardContent className="flex flex-col gap-6">
+        <CardContent className="flex flex-col gap-6 pt-6">
           <div className="space-y-2">
             <Label>{t("images.imageLabel")}</Label>
             <FileDropzone
@@ -146,22 +166,22 @@ export function ImageConvert() {
           </div>
 
           <div className="space-y-2">
-            <Label>{t("images.convertPage.targetFormat")}</Label>
-            <Select
-              value={targetFormat}
-              onValueChange={(v) => setTargetFormat(v)}
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {CONVERT_FORMATS.map(({ value, key }) => (
-                  <SelectItem key={value} value={value}>
-                    {t(`images.convertPage.formats.${key}`)}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <Label>{t("images.rotatePage.actionLabel")}</Label>
+            <div className="flex flex-wrap gap-2">
+              {TRANSFORMS.map(({ id, labelKey, icon: Icon }) => (
+                <Button
+                  key={id}
+                  type="button"
+                  variant={transform === id ? "default" : "outline"}
+                  size="sm"
+                  className="gap-1.5"
+                  onClick={() => setTransform(id)}
+                >
+                  <Icon className="h-4 w-4" aria-hidden />
+                  {t(`images.rotatePage.actions.${labelKey}`)}
+                </Button>
+              ))}
+            </div>
           </div>
 
           {error && (
@@ -172,11 +192,11 @@ export function ImageConvert() {
         </CardContent>
         <CardFooter className="flex gap-2">
           <Button
-            onClick={handleConvert}
-            disabled={files.length === 0 || converting}
+            onClick={handleApply}
+            disabled={files.length === 0 || processing}
             className="min-w-28"
           >
-            {converting ? "…" : t("images.convertPage.convertBtn")}
+            {processing ? "…" : t("images.rotatePage.applyBtn")}
           </Button>
           <Button
             variant="outline"
@@ -197,18 +217,14 @@ export function ImageConvert() {
             {results.length === 1 ? (
               <a
                 href={resultUrls[0]}
-                download={`${results[0].baseName}.${resultExt}`}
+                download={`${results[0].baseName}.${results[0].ext}`}
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Download className="h-4 w-4" aria-hidden />
                 {t("images.downloadResult")}
               </a>
             ) : (
-              <Button
-                type="button"
-                className="gap-2"
-                onClick={handleDownloadZip}
-              >
+              <Button type="button" className="gap-2" onClick={handleDownloadZip}>
                 <FileArchive className="h-4 w-4" aria-hidden />
                 {t("images.downloadZip")}
               </Button>

@@ -84,6 +84,26 @@ const ALL_FEATURES: Record<FeatureId, FeatureCard> = {
       "from-amber-500/10 to-orange-500/10 border-amber-500/20 hover:border-amber-500/40",
     iconClassName: "text-amber-600 dark:text-amber-400",
   },
+  "images.rotate": {
+    id: "images.rotate",
+    to: "/images/rotate",
+    titleKey: "images.tools.rotate.title",
+    descriptionKey: "images.tools.rotate.description",
+    icon: Image,
+    className:
+      "from-cyan-500/10 to-sky-500/10 border-cyan-500/20 hover:border-cyan-500/40",
+    iconClassName: "text-cyan-600 dark:text-cyan-400",
+  },
+  "images.stripMetadata": {
+    id: "images.stripMetadata",
+    to: "/images/strip-metadata",
+    titleKey: "images.tools.stripMetadata.title",
+    descriptionKey: "images.tools.stripMetadata.description",
+    icon: Image,
+    className:
+      "from-slate-500/10 to-zinc-500/10 border-slate-500/20 hover:border-slate-500/40",
+    iconClassName: "text-slate-600 dark:text-slate-400",
+  },
   "pdf.merge": {
     id: "pdf.merge",
     to: "/pdf/merge",
@@ -123,6 +143,26 @@ const ALL_FEATURES: Record<FeatureId, FeatureCard> = {
     className:
       "from-rose-500/10 to-orange-500/10 border-rose-500/20 hover:border-rose-500/40",
     iconClassName: "text-rose-600 dark:text-rose-400",
+  },
+  "pdf.compress": {
+    id: "pdf.compress",
+    to: "/pdf/compress",
+    titleKey: "pdf.tools.compress.title",
+    descriptionKey: "pdf.tools.compress.description",
+    icon: FileText,
+    className:
+      "from-orange-500/10 to-amber-500/10 border-orange-500/20 hover:border-orange-500/40",
+    iconClassName: "text-orange-600 dark:text-orange-400",
+  },
+  "pdf.rotate": {
+    id: "pdf.rotate",
+    to: "/pdf/rotate",
+    titleKey: "pdf.tools.rotate.title",
+    descriptionKey: "pdf.tools.rotate.description",
+    icon: FileText,
+    className:
+      "from-indigo-500/10 to-violet-500/10 border-indigo-500/20 hover:border-indigo-500/40",
+    iconClassName: "text-indigo-600 dark:text-indigo-400",
   },
   "files.convert": {
     id: "files.convert",
