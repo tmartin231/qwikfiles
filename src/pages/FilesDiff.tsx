@@ -13,22 +13,14 @@ import {
   deepMergeJson,
   diffLines,
   formatDiffText,
+  parseJsonForMerge,
+  prepareTextForDiff,
+  type DiffFormat,
 } from "@/lib/text-diff";
-import YAML from "yaml";
 import { incrementFeatureUsage } from "@/lib/usage-tracking";
 import { Copy, GitCompare } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-type DiffFormat = "json" | "yaml";
-
-function normalize(text: string, format: DiffFormat): string {
-  if (format === "yaml") {
-    const parsed = YAML.parse(text);
-    return YAML.stringify(parsed);
-  }
-  return JSON.stringify(JSON.parse(text), null, 2);
-}
 
 export function FilesDiff() {
   const { t } = useTranslation();
@@ -38,28 +30,47 @@ export function FilesDiff() {
   const [diffOutput, setDiffOutput] = useState("");
   const [mergeOutput, setMergeOutput] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [warning, setWarning] = useState<string | null>(null);
 
   const handleDiff = useCallback(() => {
     setError(null);
     setMergeOutput("");
     try {
-      const a = normalize(left, format);
-      const b = normalize(right, format);
-      const lines = diffLines(a, b);
+      const a = prepareTextForDiff(left, format);
+      const b = prepareTextForDiff(right, format);
+
+      if (a.usedRawFallback || b.usedRawFallback) {
+        setWarning(t("files.diffPage.fallbackWarning"));
+      } else {
+        setWarning(null);
+      }
+
+      const lines = diffLines(a.text, b.text);
       setDiffOutput(formatDiffText(lines));
       incrementFeatureUsage("files.diff");
     } catch {
       setError(t("files.diffPage.parseError"));
+      setWarning(null);
     }
   }, [left, right, format, t]);
 
   const handleMerge = useCallback(() => {
     if (format !== "json") return;
     setError(null);
+    setWarning(null);
+    const result = parseJsonForMerge(left, right);
+    if ("error" in result) {
+      const key =
+        result.error === "left"
+          ? "files.diffPage.parseErrorLeft"
+          : result.error === "right"
+            ? "files.diffPage.parseErrorRight"
+            : "files.diffPage.parseErrorBoth";
+      setError(t(key));
+      return;
+    }
     try {
-      const a = JSON.parse(left) as unknown;
-      const b = JSON.parse(right) as unknown;
-      const merged = deepMergeJson(a, b);
+      const merged = deepMergeJson(result.left, result.right);
       setMergeOutput(JSON.stringify(merged, null, 2));
       incrementFeatureUsage("files.diff");
     } catch {
@@ -93,7 +104,13 @@ export function FilesDiff() {
                 type="button"
                 size="sm"
                 variant={format === f ? "default" : "outline"}
-                onClick={() => setFormat(f)}
+                onClick={() => {
+                  setFormat(f);
+                  setError(null);
+                  setWarning(null);
+                  setDiffOutput("");
+                  setMergeOutput("");
+                }}
               >
                 {f.toUpperCase()}
               </Button>
@@ -107,6 +124,7 @@ export function FilesDiff() {
                 value={left}
                 onChange={(e) => setLeft(e.target.value)}
                 rows={12}
+                spellCheck={false}
                 className="w-full rounded-md border border-input bg-background px-3 py-2 font-mono text-xs"
               />
             </div>
@@ -116,10 +134,17 @@ export function FilesDiff() {
                 value={right}
                 onChange={(e) => setRight(e.target.value)}
                 rows={12}
+                spellCheck={false}
                 className="w-full rounded-md border border-input bg-background px-3 py-2 font-mono text-xs"
               />
             </div>
           </div>
+
+          {warning && (
+            <p className="text-sm text-amber-600 dark:text-amber-400" role="status">
+              {warning}
+            </p>
+          )}
 
           {error && (
             <p className="text-sm text-destructive" role="alert">
@@ -130,7 +155,7 @@ export function FilesDiff() {
           {diffOutput && (
             <div className="space-y-2">
               <Label>{t("files.diffPage.diffLabel")}</Label>
-              <pre className="max-h-64 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-xs">
+              <pre className="max-h-64 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-xs whitespace-pre-wrap">
                 {diffOutput}
               </pre>
             </div>
@@ -139,7 +164,7 @@ export function FilesDiff() {
           {mergeOutput && (
             <div className="space-y-2">
               <Label>{t("files.diffPage.mergeLabel")}</Label>
-              <pre className="max-h-64 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-xs">
+              <pre className="max-h-64 overflow-auto rounded-md border bg-muted/40 p-3 font-mono text-xs whitespace-pre-wrap">
                 {mergeOutput}
               </pre>
             </div>
@@ -150,7 +175,11 @@ export function FilesDiff() {
             {t("files.diffPage.diffBtn")}
           </Button>
           {format === "json" && (
-            <Button variant="outline" onClick={handleMerge} disabled={!left.trim() || !right.trim()}>
+            <Button
+              variant="outline"
+              onClick={handleMerge}
+              disabled={!left.trim() || !right.trim()}
+            >
               {t("files.diffPage.mergeBtn")}
             </Button>
           )}

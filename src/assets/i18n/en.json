@@ -182,7 +182,11 @@
       "mergeLabel": "Merged (JSON)",
       "diffBtn": "Compare",
       "mergeBtn": "Merge JSON",
-      "parseError": "Could not parse input."
+      "parseError": "Could not parse input.",
+      "parseErrorLeft": "Version A is not valid JSON.",
+      "parseErrorRight": "Version B is not valid JSON.",
+      "parseErrorBoth": "Neither version A nor B is valid JSON.",
+      "fallbackWarning": "At least one side is not valid JSON/YAML – showing a raw line diff. For merge, paste complete valid JSON on both sides."
     },
     "formatPage": {
       "title": "Format JSON/XML",

@@ -182,7 +182,11 @@
       "mergeLabel": "Zusammengeführt (JSON)",
       "diffBtn": "Vergleichen",
       "mergeBtn": "JSON zusammenführen",
-      "parseError": "Eingabe konnte nicht geparst werden."
+      "parseError": "Eingabe konnte nicht geparst werden.",
+      "parseErrorLeft": "Version A ist kein gültiges JSON.",
+      "parseErrorRight": "Version B ist kein gültiges JSON.",
+      "parseErrorBoth": "Weder Version A noch B sind gültiges JSON.",
+      "fallbackWarning": "Mindestens eine Seite ist kein gültiges JSON/YAML – es wird ein Zeilenvergleich der Rohdaten angezeigt. Für Merge beide Seiten als vollständiges JSON einfügen."
     },
     "formatPage": {
       "title": "JSON/XML formatieren",
