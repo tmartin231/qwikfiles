@@ -25,6 +25,12 @@
     "filesSelected_one": "1 fichier sélectionné",
     "filesSelected_other": "{{count}} fichiers sélectionnés",
     "multipleHint": "– plusieurs autorisés",
+    "preview": {
+      "title": "Aperçu",
+      "original": "Original",
+      "result": "Résultat",
+      "rotateHint": "L'aperçu se met à jour à chaque action – voyez le résultat avant le téléchargement."
+    },
     "errors": {
       "tiffParseError": "Ce fichier TIFF n'a pas pu être lu. Certains types de TIFF (par ex. certaines compressions) ne sont pas pris en charge."
     },

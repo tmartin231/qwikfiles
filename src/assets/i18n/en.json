@@ -25,6 +25,12 @@
     "filesSelected_one": "1 file selected",
     "filesSelected_other": "{{count}} files selected",
     "multipleHint": "– multiple allowed",
+    "preview": {
+      "title": "Preview",
+      "original": "Original",
+      "result": "Result",
+      "rotateHint": "The preview updates when you change the action – see the result before downloading."
+    },
     "errors": {
       "tiffParseError": "This TIFF file could not be read. Some TIFF variants (e.g. certain compressions) are not supported."
     },

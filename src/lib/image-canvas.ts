@@ -165,6 +165,24 @@ export function canvasToBlob(
   });
 }
 
+/** Vorschau-Data-URL (PNG), optional auf maxDimension skaliert. */
+export function canvasToPreviewUrl(
+  canvas: HTMLCanvasElement,
+  maxDimension = 960,
+): string {
+  const { width, height } = canvas;
+  if (width <= 0 || height <= 0) return "";
+  const scale = Math.min(1, maxDimension / Math.max(width, height));
+  if (scale >= 1) return canvas.toDataURL("image/png", 0.92);
+  const scaled = document.createElement("canvas");
+  scaled.width = Math.round(width * scale);
+  scaled.height = Math.round(height * scale);
+  const ctx = scaled.getContext("2d");
+  if (!ctx) return canvas.toDataURL("image/png", 0.92);
+  ctx.drawImage(canvas, 0, 0, scaled.width, scaled.height);
+  return scaled.toDataURL("image/png", 0.92);
+}
+
 export const CONVERT_FORMATS = [
   { value: "image/jpeg", key: "jpg", ext: "jpg" },
   { value: "image/png", key: "png", ext: "png" },

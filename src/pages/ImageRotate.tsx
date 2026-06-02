@@ -1,11 +1,13 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { BackLink } from "@/components/BackLink";
+import { ImageComparePreview } from "@/components/ImageComparePreview";
 import { FileDropzone } from "@/components/ui/file-dropzone";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
   applyTransform,
   canvasToBlob,
+  canvasToPreviewUrl,
   loadImageToCanvas,
   type ImageTransform,
 } from "@/lib/image-canvas";
@@ -18,15 +20,20 @@ import {
 import { incrementFeatureUsage } from "@/lib/usage-tracking";
 import {
   Download,
-  FileArchive,
   FlipHorizontal,
   FlipVertical,
   RotateCcw,
   RotateCw,
 } from "lucide-react";
 import JSZip from "jszip";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+type PreviewItem = {
+  fileName: string;
+  originalUrl: string;
+  previewUrl: string;
+};
 
 async function transformImage(
   file: File,
@@ -37,6 +44,20 @@ async function transformImage(
   const { mime, ext } = getOutputMimeAndExt(file, "resize");
   const blob = await canvasToBlob(transformed, mime);
   return { blob, ext };
+}
+
+async function buildPreviewItem(
+  file: File,
+  transform: ImageTransform,
+): Promise<PreviewItem> {
+  const decoded = await decodeImageFile(file);
+  const canvas = await loadImageToCanvas(decoded);
+  const transformed = applyTransform(canvas, transform);
+  return {
+    fileName: file.name,
+    originalUrl: canvasToPreviewUrl(canvas),
+    previewUrl: canvasToPreviewUrl(transformed),
+  };
 }
 
 const TRANSFORMS: {
@@ -55,17 +76,50 @@ export function ImageRotate() {
   const { t } = useTranslation();
   const [files, setFiles] = useState<File[]>([]);
   const [transform, setTransform] = useState<ImageTransform>("rotate90");
-  const [results, setResults] = useState<
-    { blob: Blob; baseName: string; ext: string }[]
-  >([]);
+  const [previews, setPreviews] = useState<PreviewItem[]>([]);
+  const [previewLoading, setPreviewLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [processing, setProcessing] = useState(false);
-  const [resultUrls, setResultUrls] = useState<string[]>([]);
+  const [downloading, setDownloading] = useState(false);
+  const previewGenRef = useRef(0);
 
-  const handleApply = useCallback(async () => {
-    if (files.length === 0) return;
+  useEffect(() => {
+    if (files.length === 0) {
+      setPreviews([]);
+      setPreviewLoading(false);
+      return;
+    }
+
+    const generation = ++previewGenRef.current;
+    setPreviewLoading(true);
     setError(null);
-    setProcessing(true);
+
+    void (async () => {
+      try {
+        const items = await Promise.all(
+          files.map((file) => buildPreviewItem(file, transform)),
+        );
+        if (previewGenRef.current !== generation) return;
+        setPreviews(items);
+      } catch (e) {
+        if (previewGenRef.current !== generation) return;
+        const msg =
+          e instanceof Error && e.message === TIFF_PARSE_ERROR
+            ? t("images.errors.tiffParseError")
+            : e instanceof Error
+              ? e.message
+              : t("images.rotatePage.genericError");
+        setError(msg);
+        setPreviews([]);
+      } finally {
+        if (previewGenRef.current === generation) setPreviewLoading(false);
+      }
+    })();
+  }, [files, transform, t]);
+
+  const handleDownload = useCallback(async () => {
+    if (files.length === 0 || previews.length === 0) return;
+    setError(null);
+    setDownloading(true);
     try {
       const decoded = await Promise.all(files.map(decodeImageFile));
       const converted = await Promise.all(
@@ -75,7 +129,30 @@ export function ImageRotate() {
           return { blob, baseName: baseName(file.name), ext };
         }),
       );
-      setResults(converted);
+
+      if (converted.length === 1) {
+        const { blob, baseName: name, ext } = converted[0]!;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${name}.${ext}`;
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        const zip = new JSZip();
+        converted.forEach(({ blob, baseName: name, ext }, i) => {
+          const uniqueName =
+            converted.length > 1 ? `${name}_${i + 1}.${ext}` : `${name}.${ext}`;
+          zip.file(uniqueName, blob);
+        });
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        const url = URL.createObjectURL(zipBlob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "rotated-images.zip";
+        a.click();
+        URL.revokeObjectURL(url);
+      }
       incrementFeatureUsage("images.rotate");
     } catch (e) {
       const msg =
@@ -85,15 +162,14 @@ export function ImageRotate() {
             ? e.message
             : t("images.rotatePage.genericError");
       setError(msg);
-      setResults([]);
     } finally {
-      setProcessing(false);
+      setDownloading(false);
     }
-  }, [files, transform, t]);
+  }, [files, transform, previews.length, t]);
 
   const handleReset = useCallback(() => {
     setFiles([]);
-    setResults([]);
+    setPreviews([]);
     setError(null);
     setTransform("rotate90");
   }, []);
@@ -103,35 +179,11 @@ export function ImageRotate() {
     else setFiles(Array.isArray(v) ? v : [v]);
   }, []);
 
-  useEffect(() => {
-    if (!results.length) {
-      setResultUrls([]);
-      return;
-    }
-    const urls = results.map((r) => URL.createObjectURL(r.blob));
-    setResultUrls(urls);
-    return () => urls.forEach((u) => URL.revokeObjectURL(u));
-  }, [results]);
-
-  const handleDownloadZip = useCallback(async () => {
-    if (results.length === 0) return;
-    const zip = new JSZip();
-    results.forEach(({ blob, baseName: name, ext }, i) => {
-      const uniqueName =
-        results.length > 1 ? `${name}_${i + 1}.${ext}` : `${name}.${ext}`;
-      zip.file(uniqueName, blob);
-    });
-    const zipBlob = await zip.generateAsync({ type: "blob" });
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "rotated-images.zip";
-    a.click();
-    URL.revokeObjectURL(url);
-  }, [results]);
+  const canDownload =
+    files.length > 0 && previews.length === files.length && !previewLoading;
 
   return (
-    <main className="mx-auto flex min-h-full w-full max-w-2xl flex-1 flex-col px-4 py-8">
+    <main className="mx-auto flex min-h-full w-full max-w-3xl flex-1 flex-col px-4 py-8">
       <BackLink to="/images" />
 
       <div className="mb-6 flex items-center gap-3">
@@ -165,24 +217,69 @@ export function ImageRotate() {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label>{t("images.rotatePage.actionLabel")}</Label>
-            <div className="flex flex-wrap gap-2">
-              {TRANSFORMS.map(({ id, labelKey, icon: Icon }) => (
-                <Button
-                  key={id}
-                  type="button"
-                  variant={transform === id ? "default" : "outline"}
-                  size="sm"
-                  className="gap-1.5"
-                  onClick={() => setTransform(id)}
-                >
-                  <Icon className="h-4 w-4" aria-hidden />
-                  {t(`images.rotatePage.actions.${labelKey}`)}
-                </Button>
-              ))}
+          {files.length > 0 && (
+            <div className="space-y-2">
+              <Label>{t("images.rotatePage.actionLabel")}</Label>
+              <div className="flex flex-wrap gap-2">
+                {TRANSFORMS.map(({ id, labelKey, icon: Icon }) => (
+                  <Button
+                    key={id}
+                    type="button"
+                    variant={transform === id ? "default" : "outline"}
+                    size="sm"
+                    className="gap-1.5"
+                    onClick={() => setTransform(id)}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden />
+                    {t(`images.rotatePage.actions.${labelKey}`)}
+                  </Button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {files.length > 0 && (
+            <div className="space-y-4 border-t border-border pt-6">
+              <div>
+                <p className="text-sm font-medium">{t("images.preview.title")}</p>
+                <p className="text-xs text-muted-foreground">
+                  {t("images.preview.rotateHint")}
+                </p>
+              </div>
+              {previews.length === 1 ? (
+                <ImageComparePreview
+                  originalUrl={previews[0]?.originalUrl ?? null}
+                  previewUrl={previews[0]?.previewUrl ?? null}
+                  originalLabel={t("images.preview.original")}
+                  previewLabel={t("images.preview.result")}
+                  loading={previewLoading}
+                />
+              ) : (
+                <div className="flex flex-col gap-6">
+                  {previews.map((item) => (
+                    <ImageComparePreview
+                      key={item.fileName}
+                      fileName={item.fileName}
+                      originalUrl={item.originalUrl}
+                      previewUrl={item.previewUrl}
+                      originalLabel={t("images.preview.original")}
+                      previewLabel={t("images.preview.result")}
+                      loading={previewLoading}
+                    />
+                  ))}
+                  {previewLoading && previews.length === 0 && (
+                    <ImageComparePreview
+                      originalUrl={null}
+                      previewUrl={null}
+                      originalLabel={t("images.preview.original")}
+                      previewLabel={t("images.preview.result")}
+                      loading
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+          )}
 
           {error && (
             <p className="text-sm text-destructive" role="alert">
@@ -190,48 +287,28 @@ export function ImageRotate() {
             </p>
           )}
         </CardContent>
-        <CardFooter className="flex gap-2">
+        <CardFooter className="flex flex-wrap gap-2">
           <Button
-            onClick={handleApply}
-            disabled={files.length === 0 || processing}
-            className="min-w-28"
+            onClick={handleDownload}
+            disabled={!canDownload || downloading}
+            className="min-w-28 gap-2"
           >
-            {processing ? "…" : t("images.rotatePage.applyBtn")}
+            <Download className="h-4 w-4" aria-hidden />
+            {downloading
+              ? "…"
+              : files.length > 1
+                ? t("images.downloadZip")
+                : t("images.downloadResult")}
           </Button>
           <Button
             variant="outline"
             onClick={handleReset}
-            disabled={files.length === 0 && results.length === 0}
+            disabled={files.length === 0}
           >
             {t("images.resetBtn")}
           </Button>
         </CardFooter>
       </Card>
-
-      {results.length > 0 && resultUrls.length === results.length && (
-        <div className="mt-6 space-y-3">
-          <p className="text-sm text-muted-foreground">
-            {t("images.imagesReady", { count: results.length })}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {results.length === 1 ? (
-              <a
-                href={resultUrls[0]}
-                download={`${results[0].baseName}.${results[0].ext}`}
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Download className="h-4 w-4" aria-hidden />
-                {t("images.downloadResult")}
-              </a>
-            ) : (
-              <Button type="button" className="gap-2" onClick={handleDownloadZip}>
-                <FileArchive className="h-4 w-4" aria-hidden />
-                {t("images.downloadZip")}
-              </Button>
-            )}
-          </div>
-        </div>
-      )}
     </main>
   );
 }

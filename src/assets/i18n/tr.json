@@ -25,6 +25,12 @@
     "filesSelected_one": "1 dosya seçildi",
     "filesSelected_other": "{{count}} dosya seçildi",
     "multipleHint": "– birden fazla dosya desteklenir",
+    "preview": {
+      "title": "Önizleme",
+      "original": "Orijinal",
+      "result": "Sonuç",
+      "rotateHint": "Önizleme her işlemde güncellenir – indirmeden önce sonucu görün."
+    },
     "errors": {
       "tiffParseError": "Bu TIFF dosyası okunamadı. Bazı TIFF türleri (ör. belirli sıkıştırmalar) desteklenmiyor."
     },

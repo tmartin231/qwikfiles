@@ -25,6 +25,12 @@
     "filesSelected_one": "1 arquivo selecionado",
     "filesSelected_other": "{{count}} arquivos selecionados",
     "multipleHint": "– vários permitidos",
+    "preview": {
+      "title": "Pré-visualização",
+      "original": "Original",
+      "result": "Resultado",
+      "rotateHint": "A pré-visualização atualiza a cada ação – veja o resultado antes de baixar."
+    },
     "errors": {
       "tiffParseError": "Não foi possível ler este arquivo TIFF. Algumas variantes de TIFF (por exemplo, certas compressões) não são suportadas."
     },
