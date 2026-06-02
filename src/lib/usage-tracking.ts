@@ -5,13 +5,21 @@ export type FeatureId =
   | "images.crop"
   | "images.rotate"
   | "images.stripMetadata"
+  | "images.favicon"
+  | "images.svgOptimize"
   | "pdf.merge"
   | "pdf.split"
   | "pdf.convert"
   | "pdf.toPdf"
   | "pdf.compress"
   | "pdf.rotate"
-  | "files.convert";
+  | "pdf.extract"
+  | "pdf.unlock"
+  | "pdf.imagesToPdf"
+  | "files.convert"
+  | "files.base64"
+  | "files.diff"
+  | "files.format";
 
 export type FeatureUsageMap = Partial<Record<FeatureId, number>>;
 

@@ -169,7 +169,7 @@ export function FileDropzone({
                     <button
                       type="button"
                       onClick={(e) => handleRemove(e, multiple ? i : undefined)}
-                      className="shrink-0 rounded p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
+                      className="shrink-0 cursor-pointer rounded p-1 text-muted-foreground hover:bg-muted hover:text-foreground"
                       aria-label={removeLabel}
                     >
                       <X className="h-4 w-4" />
@@ -187,7 +187,7 @@ export function FileDropzone({
                       e.stopPropagation();
                       inputRef.current?.click();
                     }}
-                    className="text-primary underline underline-offset-2 hover:no-underline"
+                    className="cursor-pointer text-primary underline underline-offset-2 hover:no-underline"
                   >
                     {addMoreLabel}
                   </button>
@@ -198,7 +198,7 @@ export function FileDropzone({
                     e.stopPropagation();
                     onFileChange?.(null);
                   }}
-                  className="text-primary underline underline-offset-2 hover:no-underline"
+                  className="cursor-pointer text-primary underline underline-offset-2 hover:no-underline"
                 >
                   {removeLabel} {displayFiles.length > 1 ? "alle" : ""}
                 </button>

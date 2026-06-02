@@ -105,10 +105,93 @@
       "stripMetadata": {
         "title": "Remove metadata",
         "description": "Strip EXIF and GPS from images"
+      },
+      "favicon": {
+        "title": "Create favicon",
+        "description": "Generate multi-size ICO from PNG or JPG"
+      },
+      "svgOptimize": {
+        "title": "Optimize SVG",
+        "description": "Reduce SVG file size with SVGO"
       }
+    },
+    "faviconPage": {
+      "hint": "Creates a .ico with sizes 16, 32, 48, 64, 128 and 256 pixels.",
+      "dropzoneHint": "Drag PNG or JPG here",
+      "generateBtn": "Create favicon",
+      "genericError": "An error occurred while creating the favicon."
+    },
+    "svgOptimizePage": {
+      "dropzoneHint": "Drag SVG file here",
+      "optimizeBtn": "Optimize",
+      "savings": "About {{percent}}% smaller than the original",
+      "genericError": "An error occurred while optimizing."
     }
   },
   "files": {
+    "hub": {
+      "title": "Files & text",
+      "subtitle": "Choose a tool"
+    },
+    "tools": {
+      "convert": {
+        "title": "Convert formats",
+        "description": "JSON, CSV, TSV, YAML, XML, Markdown and TXT"
+      },
+      "base64": {
+        "title": "Base64",
+        "description": "Encode text or files to Base64 – and back"
+      },
+      "diff": {
+        "title": "Diff & merge",
+        "description": "Compare JSON/YAML or merge JSON objects"
+      },
+      "format": {
+        "title": "Format JSON/XML",
+        "description": "Minify or prettify without changing format"
+      }
+    },
+    "base64Page": {
+      "title": "Base64 encoder/decoder",
+      "description": "Everything runs locally in your browser.",
+      "encodeMode": "Encode",
+      "decodeMode": "Decode",
+      "encodeTextSource": "Text",
+      "encodeFileSource": "File",
+      "textInputLabel": "Plain text",
+      "textInputPlaceholder": "Enter text to encode to Base64…",
+      "base64InputLabel": "Base64 text",
+      "base64InputPlaceholder": "Paste Base64 string to decode…",
+      "binaryHint": "Not valid UTF-8 text – use Download for the binary file.",
+      "fileLabel": "File",
+      "dropzoneHint": "Drop file here",
+      "outputLabel": "Result",
+      "encodeBtn": "Encode",
+      "decodeBtn": "Decode",
+      "copyBtn": "Copy",
+      "downloadBtn": "Download",
+      "invalidBase64": "Invalid Base64 text.",
+      "genericError": "An error occurred."
+    },
+    "diffPage": {
+      "title": "Diff & merge",
+      "description": "Compare two JSON or YAML documents. For JSON, merge right into left.",
+      "leftLabel": "Version A",
+      "rightLabel": "Version B",
+      "diffLabel": "Diff",
+      "mergeLabel": "Merged (JSON)",
+      "diffBtn": "Compare",
+      "mergeBtn": "Merge JSON",
+      "parseError": "Could not parse input."
+    },
+    "formatPage": {
+      "title": "Format JSON/XML",
+      "description": "Keep the same format – only change indentation or minify.",
+      "dropzoneHint": "Drop JSON or XML file here",
+      "prettifyBtn": "Prettify",
+      "minifyBtn": "Minify",
+      "parseError": "Could not parse file."
+    },
     "page": {
       "title": "Convert other files",
       "description": "Markdown, JSON, TXT, CSV and more – convert between common text formats.",
@@ -128,6 +211,7 @@
       "formats": {
         "json": "JSON",
         "csv": "CSV",
+        "tsv": "TSV",
         "md": "Markdown",
         "yaml": "YAML",
         "xml": "XML",
@@ -146,8 +230,8 @@
         "description": "Merge, split PDFs or convert to other formats"
       },
       "files": {
-        "title": "Other files",
-        "description": "Markdown, JSON, TXT, CSV and more – convert and adjust"
+        "title": "Files & text",
+        "description": "Convert, Base64, diff, format JSON/XML and more"
       }
     },
     "mostUsed": {
@@ -180,7 +264,54 @@
       "rotate": {
         "title": "Rotate PDF",
         "description": "Rotate all pages of a PDF."
+      },
+      "extract": {
+        "title": "Extract pages",
+        "description": "Save only pages X through Y as a new PDF"
+      },
+      "unlock": {
+        "title": "Unlock PDF",
+        "description": "Open a password-protected PDF with your password"
+      },
+      "imagesToPdf": {
+        "title": "Images → PDF",
+        "description": "Multiple images as one multi-page PDF"
       }
+    },
+    "extractPage": {
+      "title": "Extract pages",
+      "description": "Select a page range from the uploaded PDF.",
+      "fileLabel": "PDF file",
+      "dropzoneHint": "Drag PDF here or click to select",
+      "dropzoneActive": "Drop to upload",
+      "fromPage": "From page",
+      "toPage": "To page",
+      "pageCount": "The PDF has {{count}} pages.",
+      "extractBtn": "Extract",
+      "downloadResult": "Download PDF",
+      "loadError": "Could not load PDF.",
+      "genericError": "An error occurred while extracting pages."
+    },
+    "unlockPage": {
+      "title": "Unlock PDF",
+      "description": "You must know the password. An unencrypted copy is created (not all encryption types are supported; text may become image-based).",
+      "fileLabel": "PDF file",
+      "dropzoneHint": "Drag PDF here or click to select",
+      "dropzoneActive": "Drop to upload",
+      "passwordLabel": "Password",
+      "unlockBtn": "Unlock",
+      "downloadResult": "Download unlocked PDF",
+      "wrongPassword": "Wrong password or unsupported PDF."
+    },
+    "imagesToPdfPage": {
+      "title": "Images to one PDF",
+      "description": "Each image becomes one page, in selection order.",
+      "fileLabel": "Images",
+      "dropzoneHint": "Drag images here (multiple allowed)",
+      "dropzoneActive": "Drop to upload",
+      "createBtn": "Create PDF",
+      "downloadResult": "Download PDF",
+      "genericError": "An error occurred while creating the PDF."
     },
     "compressPage": {
       "title": "Compress PDF",

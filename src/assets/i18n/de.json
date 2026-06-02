@@ -105,10 +105,93 @@
       "stripMetadata": {
         "title": "Metadaten entfernen",
         "description": "EXIF und GPS aus Bildern entfernen"
+      },
+      "favicon": {
+        "title": "Favicon erstellen",
+        "description": "ICO mit mehreren Größen aus PNG/JPG erzeugen"
+      },
+      "svgOptimize": {
+        "title": "SVG optimieren",
+        "description": "SVG-Dateigröße mit SVGO reduzieren"
       }
+    },
+    "faviconPage": {
+      "hint": "Erzeugt ein .ico mit den Größen 16, 32, 48, 64, 128 und 256 Pixel.",
+      "dropzoneHint": "PNG oder JPG hierher ziehen",
+      "generateBtn": "Favicon erstellen",
+      "genericError": "Beim Erstellen des Favicons ist ein Fehler aufgetreten."
+    },
+    "svgOptimizePage": {
+      "dropzoneHint": "SVG-Datei hierher ziehen",
+      "optimizeBtn": "Optimieren",
+      "savings": "Etwa {{percent}} % kleiner als das Original",
+      "genericError": "Beim Optimieren ist ein Fehler aufgetreten."
     }
   },
   "files": {
+    "hub": {
+      "title": "Dateien & Text",
+      "subtitle": "Wähle ein Tool"
+    },
+    "tools": {
+      "convert": {
+        "title": "Formate konvertieren",
+        "description": "JSON, CSV, TSV, YAML, XML, Markdown und TXT"
+      },
+      "base64": {
+        "title": "Base64",
+        "description": "Text oder Dateien zu Base64 – und zurück"
+      },
+      "diff": {
+        "title": "Diff & Zusammenführen",
+        "description": "JSON/YAML vergleichen oder JSON mergen"
+      },
+      "format": {
+        "title": "JSON/XML formatieren",
+        "description": "Minify oder Prettify ohne Formatwechsel"
+      }
+    },
+    "base64Page": {
+      "title": "Base64 Encoder/Decoder",
+      "description": "Alles lokal im Browser – nichts wird hochgeladen.",
+      "encodeMode": "Kodieren",
+      "decodeMode": "Dekodieren",
+      "encodeTextSource": "Text",
+      "encodeFileSource": "Datei",
+      "textInputLabel": "Klartext",
+      "textInputPlaceholder": "Text eingeben, der zu Base64 wird…",
+      "base64InputLabel": "Base64-Text",
+      "base64InputPlaceholder": "Base64-String zum Dekodieren…",
+      "binaryHint": "Kein UTF-8-Text – nutze „Herunterladen“ für die Binärdatei.",
+      "fileLabel": "Datei",
+      "dropzoneHint": "Datei hierher ziehen",
+      "outputLabel": "Ergebnis",
+      "encodeBtn": "Kodieren",
+      "decodeBtn": "Dekodieren",
+      "copyBtn": "Kopieren",
+      "downloadBtn": "Herunterladen",
+      "invalidBase64": "Ungültiger Base64-Text.",
+      "genericError": "Ein Fehler ist aufgetreten."
+    },
+    "diffPage": {
+      "title": "Diff & Zusammenführen",
+      "description": "Zwei JSON- oder YAML-Dateien vergleichen. Bei JSON kann das rechte Objekt ins linke gemerged werden.",
+      "leftLabel": "Version A",
+      "rightLabel": "Version B",
+      "diffLabel": "Diff",
+      "mergeLabel": "Zusammengeführt (JSON)",
+      "diffBtn": "Vergleichen",
+      "mergeBtn": "JSON zusammenführen",
+      "parseError": "Eingabe konnte nicht geparst werden."
+    },
+    "formatPage": {
+      "title": "JSON/XML formatieren",
+      "description": "Struktur beibehalten – nur Einrückung oder Minify.",
+      "dropzoneHint": "JSON- oder XML-Datei hierher ziehen",
+      "prettifyBtn": "Formatieren (Prettify)",
+      "minifyBtn": "Minify",
+      "parseError": "Datei konnte nicht geparst werden."
+    },
     "page": {
       "title": "Andere Dateien konvertieren",
       "description": "Markdown, JSON, TXT, CSV und mehr – zwischen gängigen Textformaten umwandeln.",
@@ -128,6 +211,7 @@
       "formats": {
         "json": "JSON",
         "csv": "CSV",
+        "tsv": "TSV",
         "md": "Markdown",
         "yaml": "YAML",
         "xml": "XML",
@@ -146,8 +230,8 @@
         "description": "PDF zusammenführen, teilen oder in andere Formate umwandeln"
       },
       "files": {
-        "title": "Andere Dateien",
-        "description": "Markdown, JSON, TXT, CSV und mehr – konvertieren und anpassen"
+        "title": "Dateien & Text",
+        "description": "Konvertieren, Base64, Diff, JSON/XML formatieren und mehr"
       }
     },
     "mostUsed": {
@@ -180,7 +264,54 @@
       "rotate": {
         "title": "PDF drehen",
         "description": "Alle Seiten eines PDFs drehen."
+      },
+      "extract": {
+        "title": "Seiten extrahieren",
+        "description": "Nur Seite X bis Y als neues PDF speichern"
+      },
+      "unlock": {
+        "title": "PDF entsperren",
+        "description": "Passwortgeschütztes PDF mit deinem Passwort öffnen"
+      },
+      "imagesToPdf": {
+        "title": "Bilder → PDF",
+        "description": "Mehrere Bilder als ein mehrseitiges PDF"
       }
+    },
+    "extractPage": {
+      "title": "Seiten extrahieren",
+      "description": "Wähle einen Seitenbereich aus dem hochgeladenen PDF.",
+      "fileLabel": "PDF-Datei",
+      "dropzoneHint": "PDF hierher ziehen",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "fromPage": "Von Seite",
+      "toPage": "Bis Seite",
+      "pageCount": "Das PDF hat {{count}} Seiten.",
+      "extractBtn": "Extrahieren",
+      "downloadResult": "PDF herunterladen",
+      "loadError": "PDF konnte nicht geladen werden.",
+      "genericError": "Beim Extrahieren ist ein Fehler aufgetreten."
+    },
+    "unlockPage": {
+      "title": "PDF entsperren",
+      "description": "Du musst das Passwort kennen. Es wird eine Kopie ohne Passwort erstellt (nicht alle Verschlüsselungen; Text kann bildbasiert werden).",
+      "fileLabel": "PDF-Datei",
+      "dropzoneHint": "PDF hierher ziehen",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "passwordLabel": "Passwort",
+      "unlockBtn": "Entsperren",
+      "downloadResult": "Entsperrtes PDF herunterladen",
+      "wrongPassword": "Passwort falsch oder PDF nicht unterstützt."
+    },
+    "imagesToPdfPage": {
+      "title": "Bilder zu einem PDF",
+      "description": "Jedes Bild wird eine Seite – Reihenfolge wie in der Auswahl.",
+      "fileLabel": "Bilder",
+      "dropzoneHint": "Bilder hierher ziehen (mehrere möglich)",
+      "dropzoneActive": "Loslassen zum Hochladen",
+      "createBtn": "PDF erstellen",
+      "downloadResult": "PDF herunterladen",
+      "genericError": "Beim Erstellen des PDF ist ein Fehler aufgetreten."
     },
     "compressPage": {
       "title": "PDF komprimieren",

@@ -3,9 +3,11 @@ import {
   Crop,
   Image as ImageIcon,
   Maximize2,
+  Minimize2,
   RotateCw,
   ShieldOff,
   Shrink,
+  Sparkles,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -60,6 +62,22 @@ const IMAGE_TOOLS = [
     className:
       "from-slate-500/10 to-zinc-500/10 border-slate-500/20 hover:border-slate-500/40",
     iconClassName: "text-slate-600 dark:text-slate-400",
+  },
+  {
+    key: "favicon",
+    to: "/images/favicon",
+    icon: Sparkles,
+    className:
+      "from-fuchsia-500/10 to-pink-500/10 border-fuchsia-500/20 hover:border-fuchsia-500/40",
+    iconClassName: "text-fuchsia-600 dark:text-fuchsia-400",
+  },
+  {
+    key: "svgOptimize",
+    to: "/images/svg-optimize",
+    icon: Minimize2,
+    className:
+      "from-lime-500/10 to-green-500/10 border-lime-500/20 hover:border-lime-500/40",
+    iconClassName: "text-lime-600 dark:text-lime-400",
   },
 ] as const;
 

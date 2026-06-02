@@ -308,7 +308,7 @@ export function PdfSplit() {
                                 ? t("pdf.splitPage.splitOn")
                                 : t("pdf.splitPage.splitHere")
                             }
-                            className="group relative flex w-10 shrink-0 min-h-32 self-stretch flex-col items-center justify-center px-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            className="group relative flex w-10 shrink-0 min-h-32 cursor-pointer self-stretch flex-col items-center justify-center rounded-md px-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                           >
                             <span
                               className={cn(

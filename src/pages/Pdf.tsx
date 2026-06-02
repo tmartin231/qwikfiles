@@ -6,6 +6,8 @@ import {
   FileDiff,
   FileInput,
   FileOutput,
+  Images,
+  LockOpen,
   RotateCw,
   Shrink,
 } from "lucide-react";
@@ -58,6 +60,30 @@ const PDF_TOOLS = [
     className:
       "from-indigo-500/10 to-violet-500/10 border-indigo-500/20 hover:border-indigo-500/40",
     iconClassName: "text-indigo-600 dark:text-indigo-400",
+  },
+  {
+    key: "extract",
+    to: "/pdf/extract",
+    icon: FileOutput,
+    className:
+      "from-teal-500/10 to-cyan-500/10 border-teal-500/20 hover:border-teal-500/40",
+    iconClassName: "text-teal-600 dark:text-teal-400",
+  },
+  {
+    key: "unlock",
+    to: "/pdf/unlock",
+    icon: LockOpen,
+    className:
+      "from-yellow-500/10 to-amber-500/10 border-yellow-500/20 hover:border-yellow-500/40",
+    iconClassName: "text-yellow-600 dark:text-yellow-400",
+  },
+  {
+    key: "imagesToPdf",
+    to: "/pdf/images-to-pdf",
+    icon: Images,
+    className:
+      "from-pink-500/10 to-rose-500/10 border-pink-500/20 hover:border-pink-500/40",
+    iconClassName: "text-pink-600 dark:text-pink-400",
   },
 ] as const;
 

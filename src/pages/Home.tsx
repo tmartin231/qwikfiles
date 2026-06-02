@@ -164,15 +164,95 @@ const ALL_FEATURES: Record<FeatureId, FeatureCard> = {
       "from-indigo-500/10 to-violet-500/10 border-indigo-500/20 hover:border-indigo-500/40",
     iconClassName: "text-indigo-600 dark:text-indigo-400",
   },
+  "pdf.extract": {
+    id: "pdf.extract",
+    to: "/pdf/extract",
+    titleKey: "pdf.tools.extract.title",
+    descriptionKey: "pdf.tools.extract.description",
+    icon: FileText,
+    className:
+      "from-teal-500/10 to-cyan-500/10 border-teal-500/20 hover:border-teal-500/40",
+    iconClassName: "text-teal-600 dark:text-teal-400",
+  },
+  "pdf.unlock": {
+    id: "pdf.unlock",
+    to: "/pdf/unlock",
+    titleKey: "pdf.tools.unlock.title",
+    descriptionKey: "pdf.tools.unlock.description",
+    icon: FileText,
+    className:
+      "from-yellow-500/10 to-amber-500/10 border-yellow-500/20 hover:border-yellow-500/40",
+    iconClassName: "text-yellow-600 dark:text-amber-400",
+  },
+  "pdf.imagesToPdf": {
+    id: "pdf.imagesToPdf",
+    to: "/pdf/images-to-pdf",
+    titleKey: "pdf.tools.imagesToPdf.title",
+    descriptionKey: "pdf.tools.imagesToPdf.description",
+    icon: FileText,
+    className:
+      "from-pink-500/10 to-rose-500/10 border-pink-500/20 hover:border-rose-500/40",
+    iconClassName: "text-pink-600 dark:text-pink-400",
+  },
+  "images.favicon": {
+    id: "images.favicon",
+    to: "/images/favicon",
+    titleKey: "images.tools.favicon.title",
+    descriptionKey: "images.tools.favicon.description",
+    icon: Image,
+    className:
+      "from-fuchsia-500/10 to-pink-500/10 border-fuchsia-500/20 hover:border-fuchsia-500/40",
+    iconClassName: "text-fuchsia-600 dark:text-fuchsia-400",
+  },
+  "images.svgOptimize": {
+    id: "images.svgOptimize",
+    to: "/images/svg-optimize",
+    titleKey: "images.tools.svgOptimize.title",
+    descriptionKey: "images.tools.svgOptimize.description",
+    icon: Image,
+    className:
+      "from-lime-500/10 to-green-500/10 border-lime-500/20 hover:border-lime-500/40",
+    iconClassName: "text-lime-600 dark:text-lime-400",
+  },
   "files.convert": {
     id: "files.convert",
-    to: "/files",
-    titleKey: "files.page.title",
-    descriptionKey: "files.page.description",
+    to: "/files/convert",
+    titleKey: "files.tools.convert.title",
+    descriptionKey: "files.tools.convert.description",
     icon: FileCode,
     className:
       "from-amber-500/10 to-orange-500/10 border-amber-500/20 hover:border-amber-500/40",
     iconClassName: "text-amber-600 dark:text-amber-400",
+  },
+  "files.base64": {
+    id: "files.base64",
+    to: "/files/base64",
+    titleKey: "files.tools.base64.title",
+    descriptionKey: "files.tools.base64.description",
+    icon: FileCode,
+    className:
+      "from-sky-500/10 to-blue-500/10 border-sky-500/20 hover:border-sky-500/40",
+    iconClassName: "text-sky-600 dark:text-sky-400",
+  },
+  "files.diff": {
+    id: "files.diff",
+    to: "/files/diff",
+    titleKey: "files.tools.diff.title",
+    descriptionKey: "files.tools.diff.description",
+    icon: FileCode,
+    className:
+      "from-violet-500/10 to-purple-500/10 border-violet-500/20 hover:border-violet-500/40",
+    iconClassName: "text-violet-600 dark:text-violet-400",
+  },
+  "files.format": {
+    id: "files.format",
+    to: "/files/format",
+    titleKey: "files.tools.format.title",
+    descriptionKey: "files.tools.format.description",
+    icon: FileCode,
+    className:
+      "from-emerald-500/10 to-teal-500/10 border-emerald-500/20 hover:border-emerald-500/40",
+    iconClassName: "text-emerald-600 dark:text-emerald-400",
   },
 };
 
