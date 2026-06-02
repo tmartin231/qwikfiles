@@ -68,15 +68,8 @@ export function Header() {
         <div className="mx-auto flex h-16 max-w-[1820px] items-center justify-between gap-6 px-6">
           <Link
             to="/"
-            className="-m-1 flex shrink-0 items-center gap-4 rounded-lg transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="-m-1 flex shrink-0 items-center rounded-lg transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-muted/60 ring-1 ring-border/50 dark:bg-muted/40">
-              <img
-                src="/Logo.png"
-                alt=""
-                className="h-9 w-9 object-contain object-center"
-              />
-            </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-lg font-bold leading-tight tracking-tight text-foreground">
                 {t("common.appName")}
