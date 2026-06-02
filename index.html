@@ -5,6 +5,31 @@
     <link rel="icon" type="image/png" href="/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>qwikfiles – Simple Convert</title>
+    <style>
+      html {
+        color-scheme: light;
+        background-color: oklch(1 0 0);
+      }
+      html.dark {
+        color-scheme: dark;
+        background-color: oklch(0.147 0.004 49.25);
+      }
+      body {
+        background-color: inherit;
+      }
+    </style>
+    <script>
+      (function () {
+        var key = "qwikfiles-theme";
+        var saved = localStorage.getItem(key);
+        var dark =
+          saved === "dark" ||
+          (saved !== "light" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

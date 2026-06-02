@@ -2,6 +2,7 @@ import { Globe, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { applyDarkMode, resolveDarkMode, THEME_KEY } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 import i18n from "@/i18n.ts";
 
@@ -25,27 +26,13 @@ const LANGUAGE_FLAGS: Record<string, string> = {
   tr: "🇹🇷",
 };
 
-const THEME_KEY = "qwikfiles-theme";
-
-function getInitialDark(): boolean {
-  if (typeof window === "undefined") return true;
-  const saved = localStorage.getItem(THEME_KEY);
-  if (saved === "light") return false;
-  if (saved === "dark") return true;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
 export function Header() {
   const { t } = useTranslation();
-  const [dark, setDark] = useState(getInitialDark);
+  const [dark, setDark] = useState(resolveDarkMode);
   const [languageModalOpen, setLanguageModalOpen] = useState(false);
 
   useEffect(() => {
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    applyDarkMode(dark);
   }, [dark]);
 
   const toggleTheme = () => {
