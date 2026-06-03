@@ -426,7 +426,8 @@
   },
   "footer": {
     "feedback": "Geri bildirim",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Değişiklikler"
   },
   "placeholder": {
     "comingSoon": "Yakında geliyor.",
@@ -440,5 +441,66 @@
     "it": "İtalyanca",
     "pt": "Portekizce",
     "tr": "Türkçe"
+  },
+  "changelog": {
+    "title": "Değişiklik günlüğü",
+    "subtitle": "qwikfiles'taki yenilikler – her şey tarayıcıda, dosya yükleme yok.",
+    "currentVersion": "Güncel sürüm: v{{version}}",
+    "latest": "En yeni",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "FR, ES, IT, PT ve TR için eksiksiz çeviriler",
+          "Base64: düz metin kodlama (dosyalara ek olarak)",
+          "Tüm tıklanabilir öğelerde pointer imleci",
+          "Yeni changelog sayfası"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "JSON diff: daha toleranslı ayrıştırma (JSON5) ve satır yedeklemesi",
+          "JSON birleştirmede daha net hata mesajları"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: sayfa çıkar, kilidi aç, görseller → çok sayfalı PDF",
+          "Görseller: favicon, SVG optimize (SVGO)",
+          "Dosyalar: Base64, diff/birleştir, JSON/XML biçimlendir, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Karanlık mod: yenilemede beyaz flaş yok",
+          "Dosyalar bölümü araç merkezi olarak yeniden yapılandırıldı"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Döndür ve çevir için canlı önizleme (orijinal vs. sonuç)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Görseller: döndür/çevir, meta veri sil, AVIF ve BMP dışa aktarma",
+          "PDF: sıkıştır ve tüm sayfaları döndür",
+          "Kullanım istatistiği yalnızca başarılı işlemden sonra"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF: birleştir, böl, dönüştür ve PDF oluştur",
+          "Metin dönüştürücü (JSON, CSV, YAML, XML, Markdown)",
+          "7 dil, mobil, ana sayfada en çok kullanılan araçlar"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Görseller: dönüştür, sıkıştır, ölçekle, kırp",
+          "TIFF desteği, karanlık mod, çok dilli arayüz",
+          "qwikfiles olarak başlatıldı – her şey tarayıcıda yerel"
+        ]
+      }
+    }
   }
 }

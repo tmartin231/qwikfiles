@@ -426,7 +426,8 @@
   },
   "footer": {
     "feedback": "Feedback",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
   },
   "placeholder": {
     "comingSoon": "Funzionalità in arrivo.",
@@ -440,5 +441,66 @@
     "it": "Italiano",
     "pt": "Portoghese",
     "tr": "Turco"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Novità di qwikfiles – tutto nel browser, senza caricare file.",
+    "currentVersion": "Versione attuale: v{{version}}",
+    "latest": "Ultima",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Traduzioni complete per FR, ES, IT, PT e TR",
+          "Base64: codifica testo semplice (oltre ai file)",
+          "Cursore pointer su tutti gli elementi cliccabili",
+          "Nuova pagina changelog"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "Diff JSON: parsing più tollerante (JSON5) e fallback per righe",
+          "Messaggi di errore più chiari per il merge JSON"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: estrai pagine, sblocca, immagini → PDF multipagina",
+          "Immagini: favicon, ottimizza SVG (SVGO)",
+          "File: Base64, diff/unione, formatta JSON/XML, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Modalità scura: niente flash bianco al ricaricamento",
+          "Sezione file ristrutturata come hub strumenti"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Anteprima live per ruota e capovolgi (originale vs. risultato)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Immagini: ruota/capovolgi, rimuovi metadati, export AVIF e BMP",
+          "PDF: comprimi e ruota tutte le pagine",
+          "Statistiche d'uso solo dopo azione riuscita"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF: unisci, dividi, converti e crea PDF",
+          "Convertitore testo (JSON, CSV, YAML, XML, Markdown)",
+          "7 lingue, mobile, strumenti più usati in home"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Immagini: converti, comprimi, ridimensiona, ritaglia",
+          "Supporto TIFF, dark mode, interfaccia multilingue",
+          "Lancio di qwikfiles – tutto locale nel browser"
+        ]
+      }
+    }
   }
 }

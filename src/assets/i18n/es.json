@@ -426,7 +426,8 @@
   },
   "footer": {
     "feedback": "Comentarios",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
   },
   "placeholder": {
     "comingSoon": "Funcionalidad próximamente.",
@@ -440,5 +441,66 @@
     "it": "Italiano",
     "pt": "Portugués",
     "tr": "Turco"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Novedades de qwikfiles – todo en el navegador, sin subir archivos.",
+    "currentVersion": "Versión actual: v{{version}}",
+    "latest": "Última",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Traducciones completas para FR, ES, IT, PT y TR",
+          "Base64: codificar texto plano (además de archivos)",
+          "Cursor pointer en todos los elementos clicables",
+          "Nueva página de changelog"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "Diff JSON: parsing más tolerante (JSON5) y fallback por líneas",
+          "Mensajes de error más claros al fusionar JSON"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: extraer páginas, desbloquear, imágenes → PDF multipágina",
+          "Imágenes: favicon, optimizar SVG (SVGO)",
+          "Archivos: Base64, diff/fusión, formatear JSON/XML, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Modo oscuro: sin flash blanco al recargar",
+          "Sección de archivos reestructurada como hub de herramientas"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Vista previa en vivo al girar y voltear (original vs. resultado)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Imágenes: girar/voltear, quitar metadatos, export AVIF y BMP",
+          "PDF: comprimir y girar todas las páginas",
+          "Estadísticas de uso solo tras acción exitosa"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF: fusionar, dividir, convertir y crear PDF",
+          "Convertidor de texto (JSON, CSV, YAML, XML, Markdown)",
+          "7 idiomas, móvil, herramientas más usadas en inicio"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Imágenes: convertir, comprimir, escalar, recortar",
+          "Soporte TIFF, modo oscuro, interfaz multilingüe",
+          "Lanzamiento de qwikfiles – todo local en el navegador"
+        ]
+      }
+    }
   }
 }

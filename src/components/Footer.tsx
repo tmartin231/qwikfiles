@@ -1,5 +1,6 @@
-import { Github, MessageCircle } from "lucide-react";
+import { Github, MessageCircle, ScrollText } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { version } from "@/lib/utils";
 
 const FEEDBACK_EMAIL = "tmartin231@outlook.de";
@@ -21,6 +22,13 @@ export function Footer() {
           <Github className="h-4 w-4" aria-hidden />
           {t("footer.github")}
         </a>
+        <Link
+          to="/changelog"
+          className="inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-sm font-medium text-muted-foreground ring-1 ring-border/50 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <ScrollText className="h-4 w-4" aria-hidden />
+          {t("footer.changelog")}
+        </Link>
         <a
           href={mailto}
           className="inline-flex items-center gap-2 rounded-lg bg-muted px-4 py-2 text-sm font-medium text-muted-foreground ring-1 ring-border/50 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
@@ -30,7 +38,9 @@ export function Footer() {
         </a>
       </div>
       <div className="text-center text-sm text-muted-foreground mt-2">
-        v{version}
+        <Link to="/changelog" className="hover:text-foreground hover:underline">
+          v{version}
+        </Link>
       </div>
     </footer>
   );

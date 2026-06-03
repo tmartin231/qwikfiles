@@ -426,7 +426,69 @@
   },
   "footer": {
     "feedback": "Feedback",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Was sich bei qwikfiles geändert hat – komplett im Browser, ohne Upload.",
+    "currentVersion": "Aktuelle Version: v{{version}}",
+    "latest": "Neueste",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Übersetzungen für FR, ES, IT, PT und TR vervollständigt",
+          "Base64: Klartext kodieren (zusätzlich zu Dateien)",
+          "Pointer-Cursor auf allen klickbaren Elementen",
+          "Neue Changelog-Seite"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "JSON-Diff: toleranteres Parsing (JSON5) und Zeilen-Fallback",
+          "Klarere Fehlermeldungen beim JSON-Merge"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: Seiten extrahieren, entsperren, Bilder → mehrseitiges PDF",
+          "Bilder: Favicon-Generator, SVG optimieren (SVGO)",
+          "Dateien: Base64, Diff/Merge, JSON/XML formatieren, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Dark Mode: kein weißer Blitz mehr beim Neuladen",
+          "Dateien-Bereich als Tool-Übersicht neu strukturiert"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Live-Vorschau beim Bild drehen & spiegeln (Original vs. Ergebnis)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Bilder: drehen/spiegeln, Metadaten entfernen, AVIF & BMP als Export",
+          "PDF: komprimieren und alle Seiten drehen",
+          "Nutzungsstatistik erst nach erfolgreicher Aktion"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF zusammenführen, teilen, konvertieren und In-PDF-Umwandlung",
+          "Textdatei-Konverter (JSON, CSV, YAML, XML, Markdown)",
+          "7 Sprachen, mobile Optimierung, „Meistgenutzte Tools“ auf der Startseite"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Bilder: konvertieren, komprimieren, skalieren, zuschneiden",
+          "TIFF-Unterstützung, Dark Mode, Mehrsprachigkeit",
+          "App startet als qwikfiles – alles läuft lokal im Browser"
+        ]
+      }
+    }
   },
   "placeholder": {
     "comingSoon": "Bereich kommt demnächst.",

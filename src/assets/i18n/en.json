@@ -426,7 +426,69 @@
   },
   "footer": {
     "feedback": "Feedback",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "What's new in qwikfiles – everything runs in your browser, no uploads.",
+    "currentVersion": "Current version: v{{version}}",
+    "latest": "Latest",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Complete translations for FR, ES, IT, PT and TR",
+          "Base64: encode plain text (in addition to files)",
+          "Pointer cursor on all clickable elements",
+          "New changelog page"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "JSON diff: more lenient parsing (JSON5) and line diff fallback",
+          "Clearer error messages for JSON merge"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: extract pages, unlock, images → multi-page PDF",
+          "Images: favicon generator, SVG optimize (SVGO)",
+          "Files: Base64, diff/merge, format JSON/XML, TSV support"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Dark mode: no white flash on reload",
+          "Files section restructured as tool hub"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Live preview for rotate & flip (original vs. result)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Images: rotate/flip, strip metadata, AVIF & BMP export",
+          "PDF: compress and rotate all pages",
+          "Usage tracking only after successful action"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF merge, split, convert and to-PDF conversion",
+          "Text file converter (JSON, CSV, YAML, XML, Markdown)",
+          "7 languages, mobile improvements, most-used tools on home"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Images: convert, compress, resize, crop",
+          "TIFF support, dark mode, multilingual UI",
+          "App launches as qwikfiles – everything runs locally in the browser"
+        ]
+      }
+    }
   },
   "placeholder": {
     "comingSoon": "Coming soon.",

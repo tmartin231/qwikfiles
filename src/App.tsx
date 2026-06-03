@@ -26,6 +26,7 @@ import { PdfRotate } from "@/pages/PdfRotate";
 import { PdfExtract } from "@/pages/PdfExtract";
 import { PdfUnlock } from "@/pages/PdfUnlock";
 import { PdfImagesToPdf } from "@/pages/PdfImagesToPdf";
+import { Changelog } from "@/pages/Changelog";
 
 function Layout() {
   return (
@@ -68,6 +69,7 @@ function App() {
         <Route path="files/base64" element={<FilesBase64 />} />
         <Route path="files/diff" element={<FilesDiff />} />
         <Route path="files/format" element={<FilesFormat />} />
+        <Route path="changelog" element={<Changelog />} />
       </Route>
     </Routes>
   );

@@ -426,7 +426,8 @@
   },
   "footer": {
     "feedback": "Retour",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
   },
   "placeholder": {
     "comingSoon": "Fonctionnalité à venir.",
@@ -440,5 +441,66 @@
     "it": "Italien",
     "pt": "Portugais",
     "tr": "Turc"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Les nouveautés de qwikfiles – tout dans le navigateur, sans envoi de fichiers.",
+    "currentVersion": "Version actuelle : v{{version}}",
+    "latest": "Dernière",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Traductions complètes pour FR, ES, IT, PT et TR",
+          "Base64 : encoder du texte brut (en plus des fichiers)",
+          "Curseur pointer sur tous les éléments cliquables",
+          "Nouvelle page Changelog"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "Diff JSON : parsing plus tolérant (JSON5) et fallback ligne par ligne",
+          "Messages d'erreur plus clairs pour la fusion JSON"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF : extraire des pages, déverrouiller, images → PDF multipages",
+          "Images : favicon, optimisation SVG (SVGO)",
+          "Fichiers : Base64, diff/fusion, formater JSON/XML, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Mode sombre : plus de flash blanc au rechargement",
+          "Section fichiers restructurée en hub d'outils"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Aperçu en direct pour pivoter et retourner (original vs. résultat)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Images : pivoter/retourner, supprimer métadonnées, export AVIF et BMP",
+          "PDF : compresser et pivoter toutes les pages",
+          "Statistiques d'usage après action réussie uniquement"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF : fusion, découpe, conversion et création PDF",
+          "Convertisseur de fichiers texte (JSON, CSV, YAML, XML, Markdown)",
+          "7 langues, mobile, outils les plus utilisés sur l'accueil"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Images : convertir, compresser, redimensionner, recadrer",
+          "Support TIFF, mode sombre, interface multilingue",
+          "Lancement de qwikfiles – tout en local dans le navigateur"
+        ]
+      }
+    }
   }
 }

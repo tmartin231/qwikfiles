@@ -426,7 +426,8 @@
   },
   "footer": {
     "feedback": "Feedback",
-    "github": "GitHub"
+    "github": "GitHub",
+    "changelog": "Changelog"
   },
   "placeholder": {
     "comingSoon": "Funcionalidade em breve.",
@@ -440,5 +441,66 @@
     "it": "Italiano",
     "pt": "Português",
     "tr": "Turco"
+  },
+  "changelog": {
+    "title": "Changelog",
+    "subtitle": "Novidades do qwikfiles – tudo no navegador, sem enviar arquivos.",
+    "currentVersion": "Versão atual: v{{version}}",
+    "latest": "Mais recente",
+    "versions": {
+      "v1_3_3": {
+        "items": [
+          "Traduções completas para FR, ES, IT, PT e TR",
+          "Base64: codificar texto simples (além de arquivos)",
+          "Cursor pointer em todos os elementos clicáveis",
+          "Nova página de changelog"
+        ]
+      },
+      "v1_3_2": {
+        "items": [
+          "Diff JSON: parsing mais tolerante (JSON5) e fallback por linhas",
+          "Mensagens de erro mais claras ao mesclar JSON"
+        ]
+      },
+      "v1_3_1": {
+        "items": [
+          "PDF: extrair páginas, desbloquear, imagens → PDF multipáginas",
+          "Imagens: favicon, otimizar SVG (SVGO)",
+          "Arquivos: Base64, diff/mesclar, formatar JSON/XML, TSV"
+        ]
+      },
+      "v1_3_0": {
+        "items": [
+          "Modo escuro: sem flash branco ao recarregar",
+          "Seção de arquivos reestruturada como hub de ferramentas"
+        ]
+      },
+      "v1_2_1": {
+        "items": [
+          "Pré-visualização ao girar e espelhar (original vs. resultado)"
+        ]
+      },
+      "v1_2_0": {
+        "items": [
+          "Imagens: girar/espelhar, remover metadados, export AVIF e BMP",
+          "PDF: comprimir e girar todas as páginas",
+          "Estatísticas de uso só após ação bem-sucedida"
+        ]
+      },
+      "v1_1_0": {
+        "items": [
+          "PDF: mesclar, dividir, converter e criar PDF",
+          "Conversor de texto (JSON, CSV, YAML, XML, Markdown)",
+          "7 idiomas, mobile, ferramentas mais usadas na home"
+        ]
+      },
+      "v1_0_0": {
+        "items": [
+          "Imagens: converter, comprimir, redimensionar, cortar",
+          "Suporte TIFF, modo escuro, interface multilíngue",
+          "Lançamento do qwikfiles – tudo local no navegador"
+        ]
+      }
+    }
   }
 }
