@@ -105,7 +105,27 @@
       "stripMetadata": {
         "title": "Meta verileri kaldır",
         "description": "EXIF ve GPS'i görüntülerden sil"
+      },
+      "favicon": {
+        "title": "Favicon oluştur",
+        "description": "PNG veya JPG'den çok boyutlu ICO üret"
+      },
+      "svgOptimize": {
+        "title": "SVG optimize et",
+        "description": "SVGO ile SVG dosya boyutunu küçült"
       }
+    },
+    "faviconPage": {
+      "hint": "16, 32, 48, 64, 128 ve 256 piksel boyutlarında .ico oluşturur.",
+      "dropzoneHint": "PNG veya JPG'yi buraya sürükle",
+      "generateBtn": "Favicon oluştur",
+      "genericError": "Favicon oluşturulurken hata oluştu."
+    },
+    "svgOptimizePage": {
+      "dropzoneHint": "SVG dosyasını buraya sürükle",
+      "optimizeBtn": "Optimize et",
+      "savings": "Orijinalden yaklaşık %{{percent}} daha küçük",
+      "genericError": "Optimize edilirken hata oluştu."
     }
   },
   "files": {
@@ -131,8 +151,76 @@
         "md": "Markdown",
         "yaml": "YAML",
         "xml": "XML",
-        "txt": "Metin (TXT)"
+        "txt": "Metin (TXT)",
+        "tsv": "TSV"
       }
+    },
+    "hub": {
+      "title": "Dosyalar ve metin",
+      "subtitle": "Bir araç seç"
+    },
+    "tools": {
+      "convert": {
+        "title": "Format dönüştür",
+        "description": "JSON, CSV, TSV, YAML, XML, Markdown ve TXT"
+      },
+      "base64": {
+        "title": "Base64",
+        "description": "Metin veya dosyaları Base64'e kodla – ve geri"
+      },
+      "diff": {
+        "title": "Diff ve birleştir",
+        "description": "JSON/YAML karşılaştır veya JSON birleştir"
+      },
+      "format": {
+        "title": "JSON/XML biçimlendir",
+        "description": "Format değiştirmeden minify veya prettify"
+      }
+    },
+    "base64Page": {
+      "title": "Base64 kodlayıcı/çözücü",
+      "description": "Her şey tarayıcıda yerel çalışır.",
+      "encodeMode": "Kodla",
+      "decodeMode": "Çöz",
+      "encodeTextSource": "Metin",
+      "encodeFileSource": "Dosya",
+      "textInputLabel": "Düz metin",
+      "textInputPlaceholder": "Base64'e kodlanacak metni gir…",
+      "base64InputLabel": "Base64 metni",
+      "base64InputPlaceholder": "Çözülecek Base64 dizisini yapıştır…",
+      "binaryHint": "Geçerli UTF-8 metni değil – ikili dosya için İndir'i kullan.",
+      "fileLabel": "Dosya",
+      "dropzoneHint": "Dosyayı buraya bırak",
+      "outputLabel": "Sonuç",
+      "encodeBtn": "Kodla",
+      "decodeBtn": "Çöz",
+      "copyBtn": "Kopyala",
+      "downloadBtn": "İndir",
+      "invalidBase64": "Geçersiz Base64 metni.",
+      "genericError": "Bir hata oluştu."
+    },
+    "diffPage": {
+      "title": "Diff ve birleştir",
+      "description": "İki JSON veya YAML belgesini karşılaştır. JSON için sağdakini sola birleştir.",
+      "leftLabel": "Sürüm A",
+      "rightLabel": "Sürüm B",
+      "diffLabel": "Diff",
+      "mergeLabel": "Birleştirilmiş (JSON)",
+      "diffBtn": "Karşılaştır",
+      "mergeBtn": "JSON birleştir",
+      "parseError": "Girdi ayrıştırılamadı.",
+      "parseErrorLeft": "Sürüm A geçerli JSON değil.",
+      "parseErrorRight": "Sürüm B geçerli JSON değil.",
+      "parseErrorBoth": "Ne A ne B geçerli JSON.",
+      "fallbackWarning": "En az bir taraf geçerli JSON/YAML değil – ham satır diff'i gösteriliyor. Birleştirmek için her iki tarafa tam JSON yapıştır."
+    },
+    "formatPage": {
+      "title": "JSON/XML biçimlendir",
+      "description": "Aynı format – yalnızca girinti veya minify.",
+      "dropzoneHint": "JSON veya XML dosyasını buraya bırak",
+      "prettifyBtn": "Biçimlendir (Prettify)",
+      "minifyBtn": "Minify",
+      "parseError": "Dosya ayrıştırılamadı."
     }
   },
   "home": {
@@ -146,8 +234,8 @@
         "description": "PDF'leri birleştir, böl veya diğer formatlara dönüştür"
       },
       "files": {
-        "title": "Diğer dosyalar",
-        "description": "Markdown, JSON, TXT, CSV ve daha fazlası – dönüştür ve ayarla"
+        "title": "Dosyalar ve metin",
+        "description": "Dönüştür, Base64, diff, JSON/XML biçimlendir ve daha fazlası"
       }
     },
     "mostUsed": {
@@ -180,6 +268,18 @@
       "rotate": {
         "title": "PDF döndür",
         "description": "Bir PDF'nin tüm sayfalarını döndür."
+      },
+      "extract": {
+        "title": "Sayfa çıkar",
+        "description": "Yalnızca X–Y sayfalarını yeni PDF olarak kaydet"
+      },
+      "unlock": {
+        "title": "PDF kilidini aç",
+        "description": "Parolalı PDF'yi parolanla aç"
+      },
+      "imagesToPdf": {
+        "title": "Görseller → PDF",
+        "description": "Birden fazla görsel tek çok sayfalı PDF'de"
       }
     },
     "compressPage": {
@@ -287,6 +387,41 @@
       "downloadResult": "PDF indir",
       "moveUp": "Yukarı taşı",
       "moveDown": "Aşağı taşı"
+    },
+    "extractPage": {
+      "title": "Sayfa çıkar",
+      "description": "Yüklenen PDF'den sayfa aralığı seç.",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle",
+      "dropzoneActive": "Yüklemek için bırak",
+      "fromPage": "Sayfadan",
+      "toPage": "Sayfaya",
+      "pageCount": "PDF'de {{count}} sayfa var.",
+      "extractBtn": "Çıkar",
+      "downloadResult": "PDF indir",
+      "loadError": "PDF yüklenemedi.",
+      "genericError": "Sayfa çıkarılırken hata oluştu."
+    },
+    "unlockPage": {
+      "title": "PDF kilidini aç",
+      "description": "Parolayı bilmelisin. Şifresiz kopya oluşturulur (tüm şifreleme türleri desteklenmez; metin görsel olabilir).",
+      "fileLabel": "PDF dosyası",
+      "dropzoneHint": "PDF'yi buraya sürükle",
+      "dropzoneActive": "Yüklemek için bırak",
+      "passwordLabel": "Parola",
+      "unlockBtn": "Kilidi aç",
+      "downloadResult": "Kilidi açılmış PDF indir",
+      "wrongPassword": "Yanlış parola veya desteklenmeyen PDF."
+    },
+    "imagesToPdfPage": {
+      "title": "Görsellerden tek PDF",
+      "description": "Her görsel bir sayfa – seçim sırasına göre.",
+      "fileLabel": "Görseller",
+      "dropzoneHint": "Görselleri buraya sürükle (birden fazla)",
+      "dropzoneActive": "Yüklemek için bırak",
+      "createBtn": "PDF oluştur",
+      "downloadResult": "PDF indir",
+      "genericError": "PDF oluşturulurken hata oluştu."
     }
   },
   "footer": {
@@ -307,4 +442,3 @@
     "tr": "Türkçe"
   }
 }
-

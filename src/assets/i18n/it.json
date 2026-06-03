@@ -105,7 +105,27 @@
       "stripMetadata": {
         "title": "Rimuovi metadati",
         "description": "Rimuovi EXIF e GPS dalle immagini"
+      },
+      "favicon": {
+        "title": "Crea favicon",
+        "description": "Genera ICO multi-dimensione da PNG o JPG"
+      },
+      "svgOptimize": {
+        "title": "Ottimizza SVG",
+        "description": "Riduci la dimensione SVG con SVGO"
       }
+    },
+    "faviconPage": {
+      "hint": "Crea un .ico con dimensioni 16, 32, 48, 64, 128 e 256 pixel.",
+      "dropzoneHint": "Trascina PNG o JPG qui",
+      "generateBtn": "Crea favicon",
+      "genericError": "Errore durante la creazione del favicon."
+    },
+    "svgOptimizePage": {
+      "dropzoneHint": "Trascina un file SVG qui",
+      "optimizeBtn": "Ottimizza",
+      "savings": "Circa {{percent}} % più piccolo dell'originale",
+      "genericError": "Errore durante l'ottimizzazione."
     }
   },
   "files": {
@@ -131,8 +151,76 @@
         "md": "Markdown",
         "yaml": "YAML",
         "xml": "XML",
-        "txt": "Testo (TXT)"
+        "txt": "Testo (TXT)",
+        "tsv": "TSV"
       }
+    },
+    "hub": {
+      "title": "File e testo",
+      "subtitle": "Scegli uno strumento"
+    },
+    "tools": {
+      "convert": {
+        "title": "Converti formati",
+        "description": "JSON, CSV, TSV, YAML, XML, Markdown e TXT"
+      },
+      "base64": {
+        "title": "Base64",
+        "description": "Codifica testo o file in Base64 – e viceversa"
+      },
+      "diff": {
+        "title": "Diff e unione",
+        "description": "Confronta JSON/YAML o unisci oggetti JSON"
+      },
+      "format": {
+        "title": "Formatta JSON/XML",
+        "description": "Minify o prettify senza cambiare formato"
+      }
+    },
+    "base64Page": {
+      "title": "Codificatore/decodificatore Base64",
+      "description": "Tutto in locale nel browser.",
+      "encodeMode": "Codifica",
+      "decodeMode": "Decodifica",
+      "encodeTextSource": "Testo",
+      "encodeFileSource": "File",
+      "textInputLabel": "Testo in chiaro",
+      "textInputPlaceholder": "Inserisci il testo da codificare in Base64…",
+      "base64InputLabel": "Testo Base64",
+      "base64InputPlaceholder": "Incolla la stringa Base64 da decodificare…",
+      "binaryHint": "Non è testo UTF-8 valido – usa Scarica per il file binario.",
+      "fileLabel": "File",
+      "dropzoneHint": "Trascina un file qui",
+      "outputLabel": "Risultato",
+      "encodeBtn": "Codifica",
+      "decodeBtn": "Decodifica",
+      "copyBtn": "Copia",
+      "downloadBtn": "Scarica",
+      "invalidBase64": "Testo Base64 non valido.",
+      "genericError": "Si è verificato un errore."
+    },
+    "diffPage": {
+      "title": "Diff e unione",
+      "description": "Confronta due documenti JSON o YAML. Per JSON, unisci destra in sinistra.",
+      "leftLabel": "Versione A",
+      "rightLabel": "Versione B",
+      "diffLabel": "Diff",
+      "mergeLabel": "Unito (JSON)",
+      "diffBtn": "Confronta",
+      "mergeBtn": "Unisci JSON",
+      "parseError": "Impossibile analizzare l'input.",
+      "parseErrorLeft": "La versione A non è JSON valido.",
+      "parseErrorRight": "La versione B non è JSON valido.",
+      "parseErrorBoth": "Né la versione A né B sono JSON validi.",
+      "fallbackWarning": "Almeno un lato non è JSON/YAML valido – diff righe sui dati grezzi. Per unire, incolla JSON completo su entrambi i lati."
+    },
+    "formatPage": {
+      "title": "Formatta JSON/XML",
+      "description": "Mantieni il formato – solo indentazione o minify.",
+      "dropzoneHint": "Trascina un file JSON o XML qui",
+      "prettifyBtn": "Formatta (Prettify)",
+      "minifyBtn": "Minify",
+      "parseError": "Impossibile analizzare il file."
     }
   },
   "home": {
@@ -146,8 +234,8 @@
         "description": "Unisci, dividi o converti PDF in altri formati"
       },
       "files": {
-        "title": "Altri file",
-        "description": "Markdown, JSON, TXT, CSV e altro – converti e adatta"
+        "title": "File e testo",
+        "description": "Converti, Base64, diff, formatta JSON/XML e altro"
       }
     },
     "mostUsed": {
@@ -180,6 +268,18 @@
       "rotate": {
         "title": "Ruota PDF",
         "description": "Ruota tutte le pagine di un PDF."
+      },
+      "extract": {
+        "title": "Estrai pagine",
+        "description": "Salva solo le pagine da X a Y come nuovo PDF"
+      },
+      "unlock": {
+        "title": "Sblocca PDF",
+        "description": "Apri un PDF protetto da password"
+      },
+      "imagesToPdf": {
+        "title": "Immagini → PDF",
+        "description": "Più immagini in un PDF multipagina"
       }
     },
     "compressPage": {
@@ -287,6 +387,41 @@
       "downloadResult": "Scarica PDF",
       "moveUp": "Sposta in alto",
       "moveDown": "Sposta in basso"
+    },
+    "extractPage": {
+      "title": "Estrai pagine",
+      "description": "Scegli un intervallo di pagine dal PDF caricato.",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui",
+      "dropzoneActive": "Rilascia per caricare",
+      "fromPage": "Da pagina",
+      "toPage": "A pagina",
+      "pageCount": "Il PDF ha {{count}} pagine.",
+      "extractBtn": "Estrai",
+      "downloadResult": "Scarica PDF",
+      "loadError": "Impossibile caricare il PDF.",
+      "genericError": "Errore durante l'estrazione."
+    },
+    "unlockPage": {
+      "title": "Sblocca PDF",
+      "description": "Devi conoscere la password. Viene creata una copia non crittografata (non tutti i tipi; il testo può diventare immagine).",
+      "fileLabel": "File PDF",
+      "dropzoneHint": "Trascina un PDF qui",
+      "dropzoneActive": "Rilascia per caricare",
+      "passwordLabel": "Password",
+      "unlockBtn": "Sblocca",
+      "downloadResult": "Scarica PDF sbloccato",
+      "wrongPassword": "Password errata o PDF non supportato."
+    },
+    "imagesToPdfPage": {
+      "title": "Immagini in un PDF",
+      "description": "Ogni immagine diventa una pagina – ordine di selezione.",
+      "fileLabel": "Immagini",
+      "dropzoneHint": "Trascina immagini qui (più file possibili)",
+      "dropzoneActive": "Rilascia per caricare",
+      "createBtn": "Crea PDF",
+      "downloadResult": "Scarica PDF",
+      "genericError": "Errore durante la creazione del PDF."
     }
   },
   "footer": {
@@ -307,4 +442,3 @@
     "tr": "Turco"
   }
 }
-
